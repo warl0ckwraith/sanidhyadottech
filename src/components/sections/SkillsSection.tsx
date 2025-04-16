@@ -3,7 +3,9 @@ import { cn } from "@/lib/utils";
 import { 
   Code2, Terminal, Shield, Bug, 
   Network, Wifi, Database, GitBranch,
-  Dock, // Changed from Docker
+  // Dock is not available in lucide-react
+  // Using alternative icons for Docker and other tools
+  Box, // For Docker instead of Dock
   // Removed Python, Java, Cpp, Php, Mysql, Bash, Kotlin, Burpsuite, Wireshark, Metasploit, Aircrack
   // as they don't exist in lucide-react
 } from "lucide-react";
@@ -20,7 +22,7 @@ const skills = {
   ],
   tools: [
     { name: "Git", icon: <GitBranch className="h-5 w-5" />, level: "core" },
-    { name: "Docker", icon: <Dock className="h-5 w-5" />, level: "core" },
+    { name: "Docker", icon: <Box className="h-5 w-5" />, level: "core" },
     { name: "Burpsuite", icon: <Code2 className="h-5 w-5" />, level: "core" },
     { name: "Wireshark", icon: <Code2 className="h-5 w-5" />, level: "core" },
     { name: "Metasploit", icon: <Code2 className="h-5 w-5" />, level: "core" },
