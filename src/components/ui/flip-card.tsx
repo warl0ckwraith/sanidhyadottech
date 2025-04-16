@@ -1,7 +1,6 @@
 
 import { ReactNode, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Info } from "lucide-react";
 
 interface FlipCardProps {
   frontContent: ReactNode;
@@ -40,10 +39,6 @@ export function FlipCard({ frontContent, backContent, className }: FlipCardProps
           <div className="flex-grow">
             {frontContent}
           </div>
-          <div className="flex justify-end items-center mt-2 text-cyber-purple text-sm">
-            <Info className="h-4 w-4 mr-1" />
-            <span>Click for details</span>
-          </div>
         </div>
         
         {/* Back side */}
@@ -53,11 +48,8 @@ export function FlipCard({ frontContent, backContent, className }: FlipCardProps
             isFlipped ? "z-10" : "z-0"
           )}
         >
-          <div className="flex-grow overflow-auto pb-4">
+          <div className="flex-grow overflow-auto pb-2">
             {backContent}
-          </div>
-          <div className="flex justify-end items-center mt-2 text-cyber-purple text-sm">
-            <span>Click to go back</span>
           </div>
         </div>
       </div>

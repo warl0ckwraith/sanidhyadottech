@@ -34,11 +34,6 @@ export default function AboutSection() {
                 <h4 className="text-cyber-purple font-medium mb-2">Email</h4>
                 <p className="text-white">sanidhyasonii@proton.me</p>
               </div>
-              
-              <div>
-                <h4 className="text-cyber-purple font-medium mb-2">Phone</h4>
-                <p className="text-white">+91-9024095926</p>
-              </div>
             </div>
             
             <div className="flex justify-center gap-4 mt-8">
@@ -49,22 +44,6 @@ export default function AboutSection() {
                 className="px-4 py-2 bg-cyber-purple/20 text-cyber-neon hover:bg-cyber-purple/30 rounded-lg transition-all"
               >
                 LinkedIn
-              </a>
-              <a 
-                href="https://sanidhya.tech" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-cyber-purple/20 text-cyber-neon hover:bg-cyber-purple/30 rounded-lg transition-all"
-              >
-                Personal Website
-              </a>
-              <a 
-                href="https://www.upwork.com/freelancers/sanidhya" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-cyber-purple/20 text-cyber-neon hover:bg-cyber-purple/30 rounded-lg transition-all"
-              >
-                Upwork
               </a>
             </div>
           </div>

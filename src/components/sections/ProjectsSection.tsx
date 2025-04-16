@@ -95,7 +95,6 @@ export default function ProjectsSection() {
                   }
                   backContent={
                     <>
-                      <h3 className="text-lg font-bold text-white mb-3">{project.title}</h3>
                       <p className="text-gray-300 text-sm mb-4">{project.description}</p>
                       
                       <div className="mt-auto">

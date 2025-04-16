@@ -94,8 +94,7 @@ export default function AchievementsSection() {
                       }
                       backContent={
                         <>
-                          <h4 className="text-lg font-bold text-white mb-4">{achievement.title}</h4>
-                          <p className="text-gray-300 text-sm">{achievement.details}</p>
+                          <p className="text-gray-300">{achievement.details}</p>
                         </>
                       }
                     />
@@ -124,9 +123,7 @@ export default function AchievementsSection() {
                       }
                       backContent={
                         <>
-                          <h4 className="text-lg font-bold text-white mb-2">{recognition.title}</h4>
-                          <h5 className="text-cyber-neon text-sm mb-4">{recognition.organization}</h5>
-                          <p className="text-gray-300 text-sm">{recognition.details}</p>
+                          <p className="text-gray-300">{recognition.details}</p>
                         </>
                       }
                     />

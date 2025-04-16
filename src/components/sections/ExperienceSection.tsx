@@ -94,7 +94,7 @@ export default function ExperienceSection() {
                       <h4 className="text-cyber-neon font-mono text-sm mb-1">{exp.company}</h4>
                       <div className="flex justify-between items-center mt-3">
                         <span className="text-gray-400 text-sm">{exp.location}</span>
-                        <span className="px-3 py-1 bg-cyber-purple/20 text-cyber-purple text-xs rounded-full">
+                        <span className="px-3 py-1 bg-cyber-purple/30 text-cyber-purple text-sm font-semibold rounded-full">
                           {exp.period}
                         </span>
                       </div>
@@ -102,13 +102,11 @@ export default function ExperienceSection() {
                   }
                   backContent={
                     <>
-                      <h3 className="text-xl font-bold text-white mb-3">{exp.title}</h3>
-                      <h4 className="text-cyber-neon font-mono text-sm mb-4">{exp.company}</h4>
-                      <ul className="space-y-2">
+                      <ul className="space-y-3">
                         {exp.achievements.map((achievement, i) => (
                           <li key={i} className="flex items-start">
                             <span className="text-cyber-purple mr-2 font-mono">→</span>
-                            <span className="text-gray-300 text-sm">{achievement}</span>
+                            <span className="text-gray-300">{achievement}</span>
                           </li>
                         ))}
                       </ul>
@@ -133,19 +131,13 @@ export default function ExperienceSection() {
                     <p className="text-cyber-neon font-mono text-sm mb-1">
                       VIT Bhopal University, Bhopal, MP
                     </p>
-                    <span className="px-3 py-1 bg-cyber-purple/20 text-cyber-purple text-xs rounded-full mt-3 inline-block">
+                    <span className="px-3 py-1 bg-cyber-purple/30 text-cyber-purple text-sm font-semibold rounded-full mt-3 inline-block">
                       2022 - Present
                     </span>
                   </>
                 }
                 backContent={
                   <>
-                    <h4 className="text-lg font-bold text-white mb-3">
-                      B.Tech in Computer Science Engineering
-                    </h4>
-                    <p className="text-cyber-neon font-mono text-sm mb-4">
-                      Specialization in Cyber Security & Digital Forensics
-                    </p>
                     <p className="text-gray-300 mb-4">
                       <span className="text-cyber-purple font-medium">Relevant Coursework:</span>
                     </p>

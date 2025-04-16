@@ -69,11 +69,6 @@ export default function HeroSection() {
             </div>
           </div>
           
-          <p className="text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            With 3+ years of experience in network pentesting, vulnerability assessments, red teaming, web and wireless pentesting, 
-            and Active Directory exploitation. Developing security training solutions and active CTF participant.
-          </p>
-          
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="#projects" 
