@@ -25,7 +25,8 @@ export default function ResumeSection() {
             </p>
             
             <a 
-              href="#" /* Replace with actual resume download link */
+              href="/resume-sanidhya-soni.pdf" 
+              download="Resume-SanidhyaSoni.pdf"
               className="inline-flex items-center gap-2 px-8 py-4 bg-cyber-purple text-white font-medium rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-[0_0_10px_rgba(90,45,130,0.5)] hover:shadow-[0_0_15px_rgba(90,45,130,0.8)]"
             >
               <Download className="h-5 w-5" />

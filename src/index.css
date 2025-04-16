@@ -137,4 +137,22 @@
     box-shadow: 0 0 5px rgba(0, 255, 65, 0.7),
                 0 0 10px rgba(0, 255, 65, 0.5);
   }
+
+  /* Flip card utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
 }
+

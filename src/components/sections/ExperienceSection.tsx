@@ -1,11 +1,13 @@
 
 import { cn } from "@/lib/utils";
+import { FlipCard } from "../ui/flip-card";
 
 const experiences = [
   {
     id: 1,
     title: "Cyber Security Engineer Intern",
     company: "DGTA, Indian Army",
+    location: "Delhi",
     period: "Nov 2024 - Jan 2025",
     description: "Designed and implemented a practical framework to educate learners about red teaming and exploitation processes, and provided research support for military cyber security operations.",
     achievements: [
@@ -18,18 +20,20 @@ const experiences = [
     id: 2,
     title: "Security Engineer Intern",
     company: "CyberWarFare Labs",
+    location: "Remote",
     period: "Jan 2024 - Jul 2024",
     description: "Designed Android pentesting frameworks and engineered security challenges. Collaborated on testing on-premise security labs across Red Team, Blue Team, and Purple Team engagements.",
     achievements: [
-      "Created Android pentesting and exploitation course framework with practical and theoretical components",
-      "Engineered security challenges covering privilege escalation, web security, OSINT, and forensics",
-      "Collaborated on Active Directory enumeration, MITRE ATT&CK framework, and endpoint security testing"
+      "Developed an Android pentesting & exploitation framework",
+      "Created security challenges in privilege escalation, web security, and forensics using Docker",
+      "Collaborated in red/blue/purple team exercises focusing on AD enumeration and threat detection"
     ]
   },
   {
     id: 3,
     title: "Independent Contractor / Freelancer",
     company: "Security Testing & CTF Development",
+    location: "Remote",
     period: "Ongoing",
     description: "Engaged in developing scalable CTF infrastructure, security assessments, and digital forensics challenges for various organizations and security events.",
     achievements: [
@@ -42,6 +46,7 @@ const experiences = [
     id: 4,
     title: "CTF Development Intern",
     company: "TheCyberDelta",
+    location: "Remote",
     period: "Jul 2022 - Sep 2022",
     description: "Led the design, development, and scaling of 50+ CTF challenges, setting benchmarks using Docker and YAML.",
     achievements: [
@@ -54,6 +59,7 @@ const experiences = [
     id: 5,
     title: "Cyber Security Intern",
     company: "CyberSecuredIndia",
+    location: "Remote",
     period: "Jan 2022 - May 2022",
     description: "Conducted thorough penetration testing across web, mobile, and network environments. Performed source code reviews and utilized the MITRE ATT&CK framework for enhanced threat detection.",
     achievements: [
@@ -78,43 +84,27 @@ export default function ExperienceSection() {
           </h2>
           
           {/* Timeline */}
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gray-800"></div>
-            
-            {experiences.map((exp, index) => (
-              <div 
-                key={exp.id} 
-                className={cn(
-                  "relative mb-16 last:mb-0",
-                  "md:flex md:justify-between md:even:flex-row-reverse"
-                )}
-              >
-                {/* Timeline Dot */}
-                <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-cyber-purple border-4 border-black z-10"></div>
-                
-                {/* Content */}
-                <div className={cn(
-                  "ml-10 md:ml-0 md:w-5/12",
-                  index % 2 === 0 ? "md:pr-16" : "md:pl-16"
-                )}>
-                  <div className="bg-gray-900/50 rounded-lg p-6 border border-gray-800 hover:border-cyber-purple transition-all duration-300 shadow-lg hover:shadow-cyber-purple/20">
-                    <div className="flex justify-between items-start flex-col sm:flex-row sm:items-center mb-3">
-                      <h3 className="text-xl font-bold text-white">{exp.title}</h3>
-                      <span className="px-3 py-1 bg-cyber-purple/20 text-cyber-purple text-xs rounded-full mt-2 sm:mt-0">
-                        {exp.period}
-                      </span>
-                    </div>
-                    
-                    <h4 className="text-cyber-neon font-mono text-sm mb-4">{exp.company}</h4>
-                    
-                    <p className="text-gray-300 mb-5">
-                      {exp.description}
-                    </p>
-                    
-                    <div className="space-y-2">
-                      <h5 className="text-white font-medium text-sm">Key Achievements:</h5>
-                      <ul className="space-y-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {experiences.map((exp) => (
+              <div key={exp.id} className="h-full">
+                <FlipCard 
+                  frontContent={
+                    <>
+                      <h3 className="text-xl font-bold text-white mb-2">{exp.title}</h3>
+                      <h4 className="text-cyber-neon font-mono text-sm mb-1">{exp.company}</h4>
+                      <div className="flex justify-between items-center mt-3">
+                        <span className="text-gray-400 text-sm">{exp.location}</span>
+                        <span className="px-3 py-1 bg-cyber-purple/20 text-cyber-purple text-xs rounded-full">
+                          {exp.period}
+                        </span>
+                      </div>
+                    </>
+                  }
+                  backContent={
+                    <>
+                      <h3 className="text-xl font-bold text-white mb-3">{exp.title}</h3>
+                      <h4 className="text-cyber-neon font-mono text-sm mb-4">{exp.company}</h4>
+                      <ul className="space-y-2">
                         {exp.achievements.map((achievement, i) => (
                           <li key={i} className="flex items-start">
                             <span className="text-cyber-purple mr-2 font-mono">→</span>
@@ -122,32 +112,63 @@ export default function ExperienceSection() {
                           </li>
                         ))}
                       </ul>
-                    </div>
-                  </div>
-                </div>
+                    </>
+                  }
+                />
               </div>
             ))}
           </div>
           
           {/* Education */}
-          <div className="mt-20 text-center">
-            <h3 className="text-xl font-bold text-white mb-4">Education</h3>
-            <div className="bg-gray-900/50 rounded-lg p-6 border border-gray-800 max-w-2xl mx-auto">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-3">
-                <h4 className="text-lg font-bold text-white">Bachelor of Technology (B.Tech)</h4>
-                <span className="px-3 py-1 bg-cyber-purple/20 text-cyber-purple text-xs rounded-full mt-2 md:mt-0">
-                  2022 - Present
-                </span>
-              </div>
-              
-              <p className="text-cyber-neon font-mono text-sm mb-2">Computer Science Engineering</p>
-              <p className="text-white text-sm mb-1">Specialization in Cyber Security & Digital Forensics</p>
-              <p className="text-gray-400 text-sm mb-4">VIT Bhopal University, Bhopal, MP</p>
-              
-              <p className="text-gray-300 text-sm">
-                <span className="text-cyber-purple font-medium">Relevant Coursework:</span> Networking, Operating Systems, Security Frameworks, 
-                Web and Software Security, Network Security, Cyber Security, Python programming.
-              </p>
+          <div className="mt-16">
+            <h3 className="text-xl font-bold text-white mb-6 text-center">Education</h3>
+            
+            <div className="max-w-2xl mx-auto">
+              <FlipCard 
+                frontContent={
+                  <>
+                    <h4 className="text-lg font-bold text-white mb-2">
+                      B.Tech in Computer Science Engineering (Cyber Security & Digital Forensics)
+                    </h4>
+                    <p className="text-cyber-neon font-mono text-sm mb-1">
+                      VIT Bhopal University, Bhopal, MP
+                    </p>
+                    <span className="px-3 py-1 bg-cyber-purple/20 text-cyber-purple text-xs rounded-full mt-3 inline-block">
+                      2022 - Present
+                    </span>
+                  </>
+                }
+                backContent={
+                  <>
+                    <h4 className="text-lg font-bold text-white mb-3">
+                      B.Tech in Computer Science Engineering
+                    </h4>
+                    <p className="text-cyber-neon font-mono text-sm mb-4">
+                      Specialization in Cyber Security & Digital Forensics
+                    </p>
+                    <p className="text-gray-300 mb-4">
+                      <span className="text-cyber-purple font-medium">Relevant Coursework:</span>
+                    </p>
+                    <ul className="grid grid-cols-2 gap-2">
+                      {[
+                        "Networking", 
+                        "Operating Systems", 
+                        "Security Frameworks", 
+                        "Web Security",
+                        "Software Security", 
+                        "Network Security", 
+                        "Cyber Security",
+                        "Python Programming"
+                      ].map((course, i) => (
+                        <li key={i} className="flex items-center">
+                          <span className="text-cyber-purple mr-2 font-mono text-xs">→</span>
+                          <span className="text-gray-300 text-sm">{course}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                }
+              />
             </div>
           </div>
         </div>
