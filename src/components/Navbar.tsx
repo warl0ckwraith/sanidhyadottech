@@ -65,7 +65,7 @@ export default function Navbar() {
           className="font-bold text-xl tracking-tight text-white relative group"
         >
           <span className="relative z-10 group-hover:text-cyber-neon transition-colors duration-200">
-            J<span className="text-cyber-purple">D</span>
+            S<span className="text-cyber-purple">S</span>
           </span>
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyber-neon group-hover:w-full transition-all duration-300"></span>
         </a>
