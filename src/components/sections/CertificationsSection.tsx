@@ -4,30 +4,30 @@ import { CheckCircle, Award } from "lucide-react";
 const certifications = [
   {
     id: 1,
-    name: "OSCP - Offensive Security Certified Professional",
-    organization: "Offensive Security",
+    name: "OffSec Certified Professional (OSCP)",
+    organization: "OffSec",
     date: "2023",
     logo: "oscp" // Will be replaced with actual logo
   },
   {
     id: 2,
-    name: "OWASP - Web Application Security Specialist",
-    organization: "OWASP Foundation",
-    date: "2022",
-    logo: "owasp" // Will be replaced with actual logo
+    name: "OffSec Wireless Professional (OWSP)",
+    organization: "OffSec",
+    date: "2023",
+    logo: "owsp" // Will be replaced with actual logo
   },
   {
     id: 3,
-    name: "CNSP - Certified Network Security Professional",
+    name: "Certified Network Security Practitioner (CNSP)",
     organization: "Network Security Institute",
     date: "2022",
     logo: "cnsp" // Will be replaced with actual logo
   },
   {
     id: 4,
-    name: "Fortinet NSE Level 3 Certification",
+    name: "Fortinet Network Security Expert Level 2",
     organization: "Fortinet",
-    date: "2021",
+    date: "2022",
     logo: "fortinet" // Will be replaced with actual logo
   }
 ];
@@ -35,31 +35,87 @@ const certifications = [
 const achievements = [
   {
     id: 1,
-    title: "1st Place - National Cybersecurity Championship",
-    organization: "InfoSec Association",
-    year: "2023",
-    description: "Won first place in the nation's premier cybersecurity competition, competing against 200+ security professionals."
+    title: "1st Place - CTF by Indian Territorial Army (TCQ)",
+    organization: "Indian Territorial Army",
+    year: "2024",
+    description: "Won first place in the Capture The Flag competition organized by Indian Territorial Army, demonstrating advanced offensive security skills."
   },
   {
     id: 2,
-    title: "2nd Place - International CTF Challenge",
-    organization: "SecureCode Foundation",
+    title: "1st Place - CTF by IIT Bhubneshwar",
+    organization: "IIT Bhubneshwar",
     year: "2022",
-    description: "Secured second position in an international CTF competition with over 500 teams from 30 countries."
+    description: "Secured first position in the CTF competition organized by IIT Bhubneshwar, showcasing expertise in various security domains."
   },
   {
     id: 3,
-    title: "Top National Finalist - Security Hackathon",
-    organization: "CyberDefense Initiative",
-    year: "2022",
-    description: "Selected as one of the top 10 finalists in the national security hackathon focused on critical infrastructure protection."
+    title: "2nd Place - CTF by IIT Madras",
+    organization: "IIT Madras",
+    year: "2023",
+    description: "Achieved second place in the competitive CTF event hosted by IIT Madras, solving complex security challenges."
   },
   {
     id: 4,
-    title: "Research Grant Recipient",
-    organization: "Advanced Security Research Foundation",
-    year: "2021",
-    description: "Awarded a competitive research grant for innovative work on automated vulnerability discovery in IoT systems."
+    title: "2nd Place - CTF by BITS Hyderabad",
+    organization: "BITS Hyderabad",
+    year: "2023",
+    description: "Won second place in the national-level security competition organized by BITS Hyderabad."
+  },
+  {
+    id: 5,
+    title: "3rd Place - CTF by Data Security Council of India",
+    organization: "DSCI",
+    year: "2023",
+    description: "Secured third place in the CTF competition organized by the Data Security Council of India, competing against security professionals nationwide."
+  },
+  {
+    id: 6,
+    title: "3rd Place - CTF by IIT Roorkee",
+    organization: "IIT Roorkee",
+    year: "2023",
+    description: "Achieved third position in the security challenge competition hosted by IIT Roorkee."
+  },
+  {
+    id: 7,
+    title: "Top National Finalist - CTF by IIT Patna",
+    organization: "IIT Patna",
+    year: "2023",
+    description: "Selected as one of the top national finalists in the CTF organized by IIT Patna, demonstrating exceptional security skills."
+  },
+  {
+    id: 8,
+    title: "Top National Finalist - National CTF by TrustLab, IIT Bombay",
+    organization: "TrustLab, IIT Bombay",
+    year: "2022",
+    description: "Recognized as a top national finalist in the prestigious CTF hosted by TrustLab at IIT Bombay."
+  },
+  {
+    id: 9,
+    title: "Top National Finalist - Embedded Security CTF",
+    organization: "IIT Madras & DSCI",
+    year: "2022",
+    description: "Selected as a top finalist in the specialized Embedded Security CTF organized by IIT Madras and DSCI."
+  },
+  {
+    id: 10,
+    title: "Bounty & Certificate of Appreciation",
+    organization: "PhysicsWallah and Talent.com",
+    year: "2022",
+    description: "Received bounty and certificate of appreciation for identifying and responsibly disclosing security vulnerabilities."
+  },
+  {
+    id: 11,
+    title: "Hall of Fame Award",
+    organization: "airtame.com",
+    year: "2022",
+    description: "Listed in the Hall of Fame for significant security contributions and responsible vulnerability disclosure."
+  },
+  {
+    id: 12,
+    title: "Certificate of Appreciation",
+    organization: "IndiaMart and NCIIPC (Government of India)",
+    year: "2022",
+    description: "Received appreciation from IndiaMart and the National Critical Information Infrastructure Protection Centre for security contributions."
   }
 ];
 
@@ -109,7 +165,7 @@ export default function CertificationsSection() {
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {achievements.map((achievement) => (
+            {achievements.slice(0, 8).map((achievement) => (
               <div 
                 key={achievement.id}
                 className="bg-gray-900/50 rounded-lg p-6 border border-gray-800 hover:border-cyber-purple transition-all duration-300 group"
@@ -133,6 +189,42 @@ export default function CertificationsSection() {
                 </div>
               </div>
             ))}
+          </div>
+          
+          {/* Additional achievements - collapsed section */}
+          <div className="mt-12 text-center">
+            <details className="group">
+              <summary className="list-none cursor-pointer inline-flex items-center gap-2 px-6 py-3 bg-gray-900/50 rounded-lg border border-gray-800 hover:border-cyber-purple transition-all duration-300 text-white font-medium">
+                <span>View More Achievements</span>
+                <span className="group-open:rotate-180 text-cyber-purple transition-transform duration-300">▼</span>
+              </summary>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                {achievements.slice(8).map((achievement) => (
+                  <div 
+                    key={achievement.id}
+                    className="bg-gray-900/50 rounded-lg p-6 border border-gray-800 hover:border-cyber-purple transition-all duration-300 group"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="mt-1">
+                        <Award className="h-6 w-6 text-cyber-purple group-hover:text-cyber-neon transition-colors duration-300" />
+                      </div>
+                      
+                      <div>
+                        <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
+                          <h3 className="text-lg font-bold text-white">{achievement.title}</h3>
+                          <span className="px-3 py-1 bg-cyber-purple/10 text-cyber-purple text-xs rounded-full">
+                            {achievement.year}
+                          </span>
+                        </div>
+                        
+                        <p className="text-gray-400 text-sm mb-3">{achievement.organization}</p>
+                        <p className="text-gray-300 text-sm">{achievement.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </details>
           </div>
         </div>
       </div>

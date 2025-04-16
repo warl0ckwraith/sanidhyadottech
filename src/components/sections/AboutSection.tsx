@@ -20,11 +20,11 @@ export default function AboutSection() {
                 <div className="relative h-full rounded-lg overflow-hidden bg-gradient-to-br from-gray-800 to-black border border-cyber-purple/30">
                   {/* Replace with actual image when available */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-9xl text-cyber-purple/30 font-bold">JD</span>
+                    <span className="text-9xl text-cyber-purple/30 font-bold">SS</span>
                   </div>
                 </div>
                 <div className="absolute -bottom-4 -right-4 bg-black px-6 py-3 rounded-full border border-cyber-purple">
-                  <span className="font-mono text-cyber-neon text-sm">OSCP Certified</span>
+                  <span className="font-mono text-cyber-neon text-sm">OSCP & OWSP Certified</span>
                 </div>
               </div>
             </div>
@@ -37,16 +37,16 @@ export default function AboutSection() {
               </h3>
               
               <p className="text-gray-300 mb-6">
-                I am a dedicated cybersecurity professional with over 3 years of experience in network penetration testing, 
-                red teaming, CTF development, and digital forensics. My journey in security began with a fascination for 
-                understanding how systems can be compromised and protected.
+                I am an OSCP Certified Security Researcher with 3+ years of hands-on experience in network 
+                pentesting, vulnerability assessments, red teaming, web and wireless pentesting, and Active 
+                Directory (AD) exploitation.
               </p>
               
               <p className="text-gray-300 mb-8">
-                As a Security Engineer, I've worked on designing Android pentesting frameworks, developing security 
-                challenges for CTF competitions, and collaborating with global companies on security assessments. 
-                I'm passionate about staying at the forefront of security research and continuously enhancing my skills 
-                through CTF competitions and specialized projects.
+                I develop comprehensive security training solutions and actively participate in Capture the 
+                Flag (CTF) competitions to hone my technical, teamwork, and problem-solving skills. My journey 
+                in security began with a passion for understanding system vulnerabilities and developing effective 
+                protection strategies.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 items-start">
@@ -63,7 +63,7 @@ export default function AboutSection() {
                 
                 <div>
                   <h4 className="text-cyber-purple font-medium mb-2">Location</h4>
-                  <p className="text-white">Remote / Global</p>
+                  <p className="text-white">Jaipur, India</p>
                 </div>
               </div>
             </div>

@@ -53,12 +53,12 @@ export default function HeroSection() {
         <div className={`max-w-4xl mx-auto transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
           <div className="mb-4 inline-block">
             <span className="text-gray-300 text-sm uppercase tracking-wider font-mono">
-              OSCP Certified
+              OSCP & OWSP Certified
             </span>
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-            John <span className="text-cyber-purple">Doe</span>
+            Sanidhya <span className="text-cyber-purple">Soni</span>
           </h1>
           
           <div className="h-8 mb-6 overflow-hidden">
@@ -70,8 +70,8 @@ export default function HeroSection() {
           </div>
           
           <p className="text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            With 3+ years of experience in network pentesting, red teaming, CTF development, 
-            and digital forensics. Specializing in security research and vulnerability assessment.
+            With 3+ years of experience in network pentesting, vulnerability assessments, red teaming, web and wireless pentesting, 
+            and Active Directory exploitation. Developing security training solutions and active CTF participant.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

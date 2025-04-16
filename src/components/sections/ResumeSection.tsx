@@ -20,7 +20,7 @@ export default function ResumeSection() {
             </h3>
             
             <p className="text-gray-300 mb-8">
-              For a comprehensive overview of my skills, experiences, and certifications, 
+              For a comprehensive overview of my skills, experiences, certifications, and achievements, 
               please download my complete resume using the button below.
             </p>
             

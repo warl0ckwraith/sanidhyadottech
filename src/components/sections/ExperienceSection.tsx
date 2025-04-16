@@ -4,38 +4,62 @@ import { cn } from "@/lib/utils";
 const experiences = [
   {
     id: 1,
-    title: "Security Engineer Intern",
-    company: "SecureTech Labs",
-    period: "Jan 2023 - Present",
-    description: "Designed Android pentesting frameworks and assisted in security audits. Developed and deployed automated security testing scripts and collaborated with the red team on vulnerability assessments.",
+    title: "Cyber Security Engineer Intern",
+    company: "DGTA, Indian Army",
+    period: "Nov 2024 - Jan 2025",
+    description: "Designed and implemented a practical framework to educate learners about red teaming and exploitation processes, and provided research support for military cyber security operations.",
     achievements: [
-      "Created a course framework for Android pentesting used by 200+ students",
-      "Participated in 10+ client security assessments",
-      "Developed custom security scripts that reduced testing time by 30%"
+      "Created educational framework for red teaming processes used by defense personnel",
+      "Provided research support for military cyber security operations",
+      "Developed practical exploitation scenarios for training exercises"
     ]
   },
   {
     id: 2,
-    title: "Cyber Security Intern",
-    company: "InfoGuard Systems",
-    period: "May 2022 - Dec 2022",
-    description: "Designed and executed security challenges for internal training. Participated in blue team exercises and contributed to threat intelligence research and documentation.",
+    title: "Security Engineer Intern",
+    company: "CyberWarFare Labs",
+    period: "Jan 2024 - Jul 2024",
+    description: "Designed Android pentesting frameworks and engineered security challenges. Collaborated on testing on-premise security labs across Red Team, Blue Team, and Purple Team engagements.",
     achievements: [
-      "Designed 15+ CTF challenges for company-wide security awareness",
-      "Improved detection time for security incidents by 25%",
-      "Documented 30+ security procedures used for SOC operations"
+      "Created Android pentesting and exploitation course framework with practical and theoretical components",
+      "Engineered security challenges covering privilege escalation, web security, OSINT, and forensics",
+      "Collaborated on Active Directory enumeration, MITRE ATT&CK framework, and endpoint security testing"
     ]
   },
   {
     id: 3,
-    title: "Cyber Security Engineer Intern",
-    company: "DefensePro Corp",
-    period: "Jan 2022 - Apr 2022",
-    description: "Collaborated in red/blue/purple team exercises. Assisted in social engineering campaigns and CTF infrastructure design. Conducted security research on emerging threats.",
+    title: "Independent Contractor / Freelancer",
+    company: "Security Testing & CTF Development",
+    period: "Ongoing",
+    description: "Engaged in developing scalable CTF infrastructure, security assessments, and digital forensics challenges for various organizations and security events.",
     achievements: [
-      "Participated in 5 major security exercises with multinational teams",
-      "Discovered and documented 3 critical zero-day vulnerabilities",
-      "Built CTF infrastructure used by 500+ participants"
+      "Developed scalable CTF infrastructure for security competitions",
+      "Conducted comprehensive security assessments for clients",
+      "Created digital forensics challenges for security conferences"
+    ]
+  },
+  {
+    id: 4,
+    title: "CTF Development Intern",
+    company: "TheCyberDelta",
+    period: "Jul 2022 - Sep 2022",
+    description: "Led the design, development, and scaling of 50+ CTF challenges, setting benchmarks using Docker and YAML.",
+    achievements: [
+      "Designed and developed over 50 CTF challenges across various security domains",
+      "Set benchmarks using Docker and YAML for challenge deployment",
+      "Implemented scalable infrastructure for CTF competitions"
+    ]
+  },
+  {
+    id: 5,
+    title: "Cyber Security Intern",
+    company: "CyberSecuredIndia",
+    period: "Jan 2022 - May 2022",
+    description: "Conducted thorough penetration testing across web, mobile, and network environments. Performed source code reviews and utilized the MITRE ATT&CK framework for enhanced threat detection.",
+    achievements: [
+      "Achieved 1st place in the final internship assessment",
+      "Conducted penetration testing across web, mobile, and network environments",
+      "Performed source code reviews and utilized the MITRE ATT&CK framework"
     ]
   }
 ];
@@ -105,19 +129,26 @@ export default function ExperienceSection() {
             ))}
           </div>
           
-          {/* Additional Experience */}
+          {/* Education */}
           <div className="mt-20 text-center">
-            <h3 className="text-xl font-bold text-white mb-4">Additional Experience</h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              I've also contributed to numerous open-source security projects and volunteered as a security
-              researcher for non-profit organizations. My work includes vulnerability disclosure coordination 
-              and providing security workshops for community events.
-            </p>
-            
-            <a href="#contact" className="inline-flex items-center text-cyber-purple hover:text-cyber-neon transition-colors duration-300">
-              <span className="mr-2">Contact me for full employment history</span>
-              <span className="text-xl">→</span>
-            </a>
+            <h3 className="text-xl font-bold text-white mb-4">Education</h3>
+            <div className="bg-gray-900/50 rounded-lg p-6 border border-gray-800 max-w-2xl mx-auto">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-3">
+                <h4 className="text-lg font-bold text-white">Bachelor of Technology (B.Tech)</h4>
+                <span className="px-3 py-1 bg-cyber-purple/20 text-cyber-purple text-xs rounded-full mt-2 md:mt-0">
+                  2022 - Present
+                </span>
+              </div>
+              
+              <p className="text-cyber-neon font-mono text-sm mb-2">Computer Science Engineering</p>
+              <p className="text-white text-sm mb-1">Specialization in Cyber Security & Digital Forensics</p>
+              <p className="text-gray-400 text-sm mb-4">VIT Bhopal University, Bhopal, MP</p>
+              
+              <p className="text-gray-300 text-sm">
+                <span className="text-cyber-purple font-medium">Relevant Coursework:</span> Networking, Operating Systems, Security Frameworks, 
+                Web and Software Security, Network Security, Cyber Security, Python programming.
+              </p>
+            </div>
           </div>
         </div>
       </div>

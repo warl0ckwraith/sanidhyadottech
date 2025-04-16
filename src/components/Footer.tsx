@@ -1,5 +1,5 @@
 
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Globe, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -8,28 +8,23 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <h2 className="text-xl font-bold text-white">
-              John <span className="text-cyber-purple">Doe</span>
+              Sanidhya <span className="text-cyber-purple">Soni</span>
             </h2>
             <p className="text-gray-400 mt-1">Cybersecurity Expert & Researcher</p>
           </div>
           
           <div className="flex space-x-6">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" 
-               className="text-gray-400 hover:text-cyber-neon transition-colors duration-300">
-              <Github className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" 
+            <a href="https://linkedin.com/in/sanidhyasonii" target="_blank" rel="noopener noreferrer" 
                className="text-gray-400 hover:text-cyber-neon transition-colors duration-300">
               <Linkedin className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
+            <a href="https://sanidhya.tech" target="_blank" rel="noopener noreferrer" 
                className="text-gray-400 hover:text-cyber-neon transition-colors duration-300">
-              <Twitter className="h-5 w-5" />
-              <span className="sr-only">Twitter</span>
+              <Globe className="h-5 w-5" />
+              <span className="sr-only">Website</span>
             </a>
-            <a href="mailto:contact@johndoe.com" 
+            <a href="mailto:sanidhyasonii@proton.me" 
                className="text-gray-400 hover:text-cyber-neon transition-colors duration-300">
               <Mail className="h-5 w-5" />
               <span className="sr-only">Email</span>
@@ -39,7 +34,7 @@ export default function Footer() {
         
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} John Doe. All rights reserved.
+            © {new Date().getFullYear()} Sanidhya Soni. All rights reserved.
           </p>
           
           <nav className="flex space-x-6 mt-4 md:mt-0">

@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 const projects = [
   {
     id: 1,
-    title: "CTF Challenge Suite",
+    title: "CTF Challenges - Vulncon",
     category: "Security Challenges",
-    description: "Designed 50+ CTF challenges across various security domains including web exploitation, reverse engineering, cryptography, and forensics for high-profile competitions.",
-    technologies: ["Docker", "Python", "JavaScript", "Linux"],
-    image: "ctf-challenges", // Will be replaced with actual image
+    description: "Developed digital forensics based CTF challenges for Vulncon Security Conference in Bengaluru, focusing on real-world security scenarios and practical exploitation techniques.",
+    technologies: ["Docker", "Python", "Digital Forensics", "Linux"],
+    image: "vulncon-ctf", // Will be replaced with actual image
     links: {
       github: "#",
       live: "#"
@@ -18,11 +18,11 @@ const projects = [
   },
   {
     id: 2,
-    title: "Android Security Framework",
-    category: "Mobile Security",
-    description: "Developed a comprehensive Android pentesting framework for automated vulnerability scanning, application analysis, and security hardening recommendations.",
-    technologies: ["Kotlin", "Java", "Smali", "AndroidSDK"],
-    image: "android-security", // Will be replaced with actual image
+    title: "BSides Mumbai Challenges",
+    category: "CTF Development",
+    description: "Created diverse CTF challenges for BSides Mumbai 2024, covering areas such as web exploitation, reverse engineering, cryptography, and network security.",
+    technologies: ["Docker", "YAML", "JavaScript", "Python"],
+    image: "bsides-mumbai", // Will be replaced with actual image
     links: {
       github: "#",
       live: "#"
@@ -30,22 +30,22 @@ const projects = [
   },
   {
     id: 3,
-    title: "Digital Forensics Toolkit",
+    title: "BSides Indore Challenges",
     category: "Forensics",
-    description: "Created specialized forensic analysis tools for digital evidence extraction, file carving, and metadata examination with detailed reporting features.",
-    technologies: ["Python", "C++", "ElectronJS"],
-    image: "forensics-toolkit", // Will be replaced with actual image
+    description: "Designed and implemented digital forensics based CTF challenges for the BSides Indore onsite event, enhancing participant engagement and learning.",
+    technologies: ["Python", "Memory Forensics", "Disk Forensics"],
+    image: "bsides-indore", // Will be replaced with actual image
     links: {
       github: "#"
     }
   },
   {
     id: 4,
-    title: "Network Traffic Analyzer",
-    category: "Network Security",
-    description: "Built an advanced traffic analysis tool with anomaly detection, protocol inspection, and visualization features for security operations centers.",
-    technologies: ["Python", "Wireshark API", "ElasticSearch", "D3.js"],
-    image: "traffic-analyzer", // Will be replaced with actual image
+    title: "IoT Scanning & Exploitation Framework - AISE",
+    category: "Security Tools",
+    description: "Developed an IoT scanner and exploitation tool using Docker, Python, Rustscan, Nmap, with integration for Shodan, Censys, and Zoomeye APIs for comprehensive device discovery.",
+    technologies: ["Python", "Docker", "Rustscan", "Nmap", "SQLite3"],
+    image: "aise-framework", // Will be replaced with actual image
     links: {
       github: "#",
       live: "#"
@@ -53,11 +53,11 @@ const projects = [
   },
   {
     id: 5,
-    title: "Security Training Platform",
+    title: "Security Workshop - JECRC University",
     category: "Education",
-    description: "Developed an interactive security training platform with hands-on labs, custom vulnerabilities, and progressive learning paths for cybersecurity students.",
-    technologies: ["React", "Node.js", "Docker", "MongoDB"],
-    image: "training-platform", // Will be replaced with actual image
+    description: "Conducted training sessions as a Workshop Speaker in Cyber Security at JECRC University, Jaipur in collaboration with CyberSecuredIndia, Aspire For Her, and Infosys.",
+    technologies: ["Security Training", "Workshops", "Cybersecurity"],
+    image: "security-workshop", // Will be replaced with actual image
     links: {
       github: "#",
       live: "#"
@@ -65,11 +65,11 @@ const projects = [
   },
   {
     id: 6,
-    title: "IoT Security Scanner",
-    category: "IoT Security",
-    description: "Created an automated scanner for IoT devices that identifies vulnerabilities, weak configurations, and outdated firmware with remediation recommendations.",
-    technologies: ["Python", "Rustscan", "MQTT", "ZigBee"],
-    image: "iot-scanner", // Will be replaced with actual image
+    title: "Android Pentesting Framework",
+    category: "Mobile Security",
+    description: "Designed and implemented an Android pentesting and exploitation course framework with both practical and theoretical components for security training.",
+    technologies: ["Android", "Kotlin", "Java", "Docker"],
+    image: "android-framework", // Will be replaced with actual image
     links: {
       github: "#"
     }
@@ -186,7 +186,8 @@ export default function ProjectsSection() {
           <div className="mt-16 text-center">
             <p className="text-gray-300 mb-6">
               These projects represent a portion of my professional work. 
-              I've built many more security tools and participated in numerous CTF events.
+              I've built many more security tools and participated in numerous CTF events,
+              winning multiple competitions at national level.
             </p>
             
             <a 

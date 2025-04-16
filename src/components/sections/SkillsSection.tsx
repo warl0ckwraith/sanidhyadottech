@@ -8,6 +8,8 @@ const skills = [
     items: [
       { name: "Python", level: 90 },
       { name: "PHP", level: 75 },
+      { name: "MySQL", level: 80 },
+      { name: "Bash", level: 85 },
       { name: "C++", level: 70 },
       { name: "Java", level: 65 },
       { name: "Kotlin", level: 60 },
@@ -17,10 +19,10 @@ const skills = [
     category: "Security Skills",
     items: [
       { name: "Network Pentesting", level: 95 },
-      { name: "Active Directory Exploitation", level: 85 },
-      { name: "Wireless Pentesting", level: 80 },
-      { name: "Web Application Security", level: 90 },
-      { name: "Malware Analysis", level: 75 },
+      { name: "Active Directory Pentesting", level: 90 },
+      { name: "Web Pentesting", level: 85 },
+      { name: "Wireless Pentesting", level: 85 },
+      { name: "Source Code Review", level: 80 },
     ]
   },
   {
@@ -29,7 +31,9 @@ const skills = [
       { name: "Docker", level: 85 },
       { name: "Bloodhound", level: 90 },
       { name: "Burpsuite", level: 95 },
-      { name: "Nessus", level: 80 },
+      { name: "Crackmapexec/NetExec", level: 85 },
+      { name: "Impacket", level: 80 },
+      { name: "Nessus", level: 75 },
       { name: "Wireshark", level: 85 },
     ]
   }
@@ -114,7 +118,7 @@ export default function SkillsSection() {
                 <div>
                   <h4 className="text-cyber-purple font-medium mb-2">CTF Development</h4>
                   <p className="text-gray-300 text-sm">
-                    Created over 50 unique CTF challenges for various competitions and events.
+                    Created numerous CTF challenges for competitions including Vulncon Security Conference, BSides Mumbai, and BSides Indore.
                     Skilled in designing engaging scenarios that test real-world security skills.
                   </p>
                 </div>
@@ -123,7 +127,7 @@ export default function SkillsSection() {
                   <h4 className="text-cyber-purple font-medium mb-2">Red Team Operations</h4>
                   <p className="text-gray-300 text-sm">
                     Experienced in planning and executing red team exercises, including social engineering
-                    campaigns and infrastructure penetration simulations.
+                    campaigns and infrastructure penetration simulations, with expertise in Active Directory environments.
                   </p>
                 </div>
                 
@@ -131,7 +135,7 @@ export default function SkillsSection() {
                   <h4 className="text-cyber-purple font-medium mb-2">Digital Forensics</h4>
                   <p className="text-gray-300 text-sm">
                     Specialized in evidence collection, disk imaging, and malware behavior analysis.
-                    Proficient with various forensic tools and methodologies.
+                    Created forensic challenges for security competitions and training programs.
                   </p>
                 </div>
               </div>
@@ -145,13 +149,13 @@ export default function SkillsSection() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 "Incident Response",
-                "Cloud Security",
+                "GoPhish/EvilGinx",
                 "IoT Exploitation",
-                "Binary Analysis",
-                "Threat Hunting",
-                "Mobile Security",
-                "Network Defense",
-                "Social Engineering"
+                "MITRE ATT&CK",
+                "Cobalt Strike",
+                "Metasploit",
+                "Aircrack-ng",
+                "Git/Unix"
               ].map((skill) => (
                 <div 
                   key={skill} 
