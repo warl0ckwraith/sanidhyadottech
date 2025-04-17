@@ -1,5 +1,7 @@
+
 import * as React from "react"
 import * as SwitchPrimitives from "@radix-ui/react-switch"
+import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
@@ -15,10 +17,12 @@ const Switch = React.forwardRef<
     {...props}
     ref={ref}
   >
-    <SwitchPrimitives.Thumb
+    <motion.div
+      layout
       className={cn(
-        "pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"
+        "pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"
       )}
+      transition={{ type: "spring", stiffness: 500, damping: 30 }}
     />
   </SwitchPrimitives.Root>
 ))

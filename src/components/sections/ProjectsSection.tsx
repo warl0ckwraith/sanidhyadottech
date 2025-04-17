@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { FlipCard } from "../ui/flip-card";
+import { Badge } from "../ui/badge";
 
 const projects = [
   {
@@ -88,9 +89,9 @@ export default function ProjectsSection() {
                   frontContent={
                     <>
                       <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-                      <span className="px-2 py-1 bg-cyber-purple/10 text-cyber-purple text-xs rounded">
+                      <Badge variant="purple-light" className="font-medium">
                         {project.category}
-                      </span>
+                      </Badge>
                     </>
                   }
                   backContent={
@@ -101,9 +102,9 @@ export default function ProjectsSection() {
                         <h4 className="text-cyber-purple text-xs mb-2">Technologies Used:</h4>
                         <div className="flex flex-wrap gap-2">
                           {project.technologies.map((tech, i) => (
-                            <span key={i} className="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">
+                            <Badge key={i} variant="purple-light" className="text-white">
                               {tech}
-                            </span>
+                            </Badge>
                           ))}
                         </div>
                       </div>

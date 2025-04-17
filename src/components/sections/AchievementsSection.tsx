@@ -1,4 +1,7 @@
+
 import { FlipCard } from "../ui/flip-card";
+import { Badge } from "../ui/badge";
+import { motion } from "framer-motion";
 
 const achievements = [
   {
@@ -82,14 +85,18 @@ export default function AchievementsSection() {
               <h3 className="text-2xl font-bold text-white mb-8 text-center">CTF Competitions</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {achievements.map((achievement) => (
-                  <div key={achievement.id} className="h-full">
+                  <motion.div 
+                    key={achievement.id}
+                    className="h-full"
+                    whileHover={{ y: -5 }}
+                  >
                     <FlipCard 
                       frontContent={
                         <>
                           <h4 className="text-lg font-bold text-white mb-3">{achievement.title}</h4>
-                          <span className="px-2 py-1 bg-cyber-purple/10 text-cyber-purple text-xs rounded">
+                          <Badge variant="purple-solid">
                             {achievement.event}
-                          </span>
+                          </Badge>
                         </>
                       }
                       backContent={
@@ -98,7 +105,7 @@ export default function AchievementsSection() {
                         </>
                       }
                     />
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -108,16 +115,22 @@ export default function AchievementsSection() {
               <h3 className="text-2xl font-bold text-white mb-8 text-center">Additional Recognitions</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {recognitions.map((recognition) => (
-                  <div key={recognition.id} className="h-full">
+                  <motion.div 
+                    key={recognition.id}
+                    className="h-full"
+                    whileHover={{ y: -5 }}
+                  >
                     <FlipCard 
                       frontContent={
                         <>
                           <h4 className="text-lg font-bold text-white mb-3">{recognition.title}</h4>
-                          <span className="px-2 py-1 bg-cyber-purple/10 text-cyber-purple text-xs rounded">
+                          <Badge variant="purple-solid">
                             {recognition.organization}
-                          </span>
+                          </Badge>
                           <div className="mt-3">
-                            <span className="text-gray-400 text-sm">{recognition.year}</span>
+                            <Badge variant="purple-light" className="text-white">
+                              {recognition.year}
+                            </Badge>
                           </div>
                         </>
                       }
@@ -127,7 +140,7 @@ export default function AchievementsSection() {
                         </>
                       }
                     />
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
