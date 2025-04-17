@@ -1,3 +1,4 @@
+
 'use client';
 import React from 'react';
 import { useEffect, useState } from 'react';
@@ -31,13 +32,14 @@ export function BackToTop() {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          className="fixed bottom-8 right-8 p-3 rounded-full bg-cyber-purple/20 backdrop-blur-sm border border-cyber-purple/30 text-cyber-purple hover:bg-cyber-purple/30 transition-colors z-50"
+          className="fixed bottom-8 right-8 p-3 rounded-full bg-cyber-purple/20 backdrop-blur-sm border border-cyber-purple/30 text-cyber-purple hover:bg-cyber-purple/30 hover:border-cyber-purple/50 hover:shadow-[0_0_15px_rgba(90,45,130,0.5)] transition-all z-50"
           onClick={scrollToTop}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
+          aria-label="Scroll to top"
         >
           <ArrowUp className="h-5 w-5" />
         </motion.button>

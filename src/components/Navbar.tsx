@@ -5,6 +5,8 @@ import {
   Menu, X, Home, User, Code, Briefcase, Award, 
   FileText, MessageSquare, BookOpen, GraduationCap 
 } from 'lucide-react';
+import { ThemeToggle } from './ui/theme-toggle';
+import { motion } from 'framer-motion';
 
 const navItems = [
   { name: 'Home', href: '#home', icon: <Home className="h-4 w-4" /> },
@@ -54,26 +56,28 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300",
         scrolled 
-          ? "bg-black/80 backdrop-blur-md border-b border-cyber-purple/30 shadow-lg"
+          ? "bg-black/80 dark:bg-black/80 backdrop-blur-md border-b border-cyber-purple/30 shadow-lg"
           : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <a 
+        <motion.a 
           href="#home" 
           className="font-bold text-xl tracking-tight text-white relative group"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           <span className="relative z-10 group-hover:text-cyber-neon transition-colors duration-200">
             S<span className="text-cyber-purple">S</span>
           </span>
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyber-neon group-hover:w-full transition-all duration-300"></span>
-        </a>
+        </motion.a>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           {navItems.map((item) => (
-            <a
+            <motion.a
               key={item.name}
               href={item.href}
               className={cn(
@@ -82,6 +86,8 @@ export default function Navbar() {
                   ? "text-cyber-neon" 
                   : "text-gray-300 hover:text-white transition-colors duration-200"
               )}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <span className="flex items-center gap-1.5">
                 {item.icon}
@@ -93,23 +99,30 @@ export default function Navbar() {
                   activeSection === item.href.substring(1) ? "w-full" : "w-0 group-hover:w-full"
                 )}
               ></span>
-            </a>
+            </motion.a>
           ))}
         </nav>
         
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden text-gray-300 hover:text-white"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X /> : <Menu />}
-        </button>
+        {/* Theme Toggle */}
+        <div className="flex items-center gap-4">
+          <ThemeToggle />
+          
+          {/* Mobile Menu Button */}
+          <motion.button 
+            className="md:hidden text-gray-300 hover:text-white"
+            onClick={() => setIsOpen(!isOpen)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {isOpen ? <X /> : <Menu />}
+          </motion.button>
+        </div>
       </div>
       
       {/* Mobile Menu */}
       <div 
         className={cn(
-          "absolute top-full left-0 w-full bg-black/95 backdrop-blur-lg border-b border-cyber-purple/20",
+          "absolute top-full left-0 w-full bg-black/95 dark:bg-black/95 backdrop-blur-lg border-b border-cyber-purple/20",
           "md:hidden transition-all duration-300 overflow-hidden",
           isOpen ? "max-h-screen" : "max-h-0"
         )}
@@ -117,7 +130,7 @@ export default function Navbar() {
         <div className="container mx-auto px-4 py-4">
           <nav className="flex flex-col space-y-4">
             {navItems.map((item) => (
-              <a
+              <motion.a
                 key={item.name}
                 href={item.href}
                 className={cn(
@@ -127,10 +140,12 @@ export default function Navbar() {
                     : "text-gray-300 hover:bg-cyber-purple/10 hover:text-white transition-colors duration-200"
                 )}
                 onClick={() => setIsOpen(false)}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
                 {item.icon}
                 {item.name}
-              </a>
+              </motion.a>
             ))}
           </nav>
         </div>
