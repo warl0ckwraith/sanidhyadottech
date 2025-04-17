@@ -1,25 +1,20 @@
 
 import { useState, useEffect } from "react";
-import { ArrowDownCircle } from "lucide-react";
+import { ArrowDownCircle, FileText } from "lucide-react";
+import { Badge } from "../ui/badge";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   const [loaded, setLoaded] = useState(false);
-  const [isTyping, setIsTyping] = useState(true);
   
   useEffect(() => {
     setLoaded(true);
-    
-    const timer = setTimeout(() => {
-      setIsTyping(false);
-    }, 4000); // Match with typewriter animation duration
-    
-    return () => clearTimeout(timer);
   }, []);
   
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden"
+      className="relative min-h-screen flex flex-col items-start justify-center overflow-hidden"
     >
       {/* Background with overlay */}
       <div className="absolute inset-0 bg-black bg-cyber-grid bg-cyber-grid-size z-0">
@@ -50,48 +45,69 @@ export default function HeroSection() {
       
       {/* Content */}
       <div className="container mx-auto px-4 z-10">
-        <div className={`max-w-4xl mx-auto transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
-          <div className="mb-4 inline-block">
-            <span className="text-gray-300 text-sm uppercase tracking-wider font-mono">
-              OSCP & OWSP Certified
-            </span>
-          </div>
+        <div className={`max-w-4xl transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <p className="text-gray-300 text-sm font-mono mb-2">Hi, my name is</p>
+          </motion.div>
+
+          <motion.h1 
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 text-white"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            Sanidhya <span className="text-cyber-purple">Soni.</span>
+          </motion.h1>
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-            Sanidhya <span className="text-cyber-purple">Soni</span>
-          </h1>
+          <motion.h2 
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-300 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            I help making internet a secure place.
+          </motion.h2>
           
-          <div className="h-8 mb-6 overflow-hidden">
-            <div className={`font-mono text-xl inline-block ${isTyping ? 'animate-typewriter border-r-2 border-cyber-neon animate-blink' : ''}`}>
-              <span className="text-cyber-neon">
-                Cyber Security Researcher & Penetration Testing Expert
-              </span>
-            </div>
-          </div>
+          <motion.p 
+            className="text-lg sm:text-xl text-gray-400 mb-8 max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+          >
+            I'm a security engineer who builds pentesting frameworks, CTF challenges, and training tools that make enterprise systems safer.
+          </motion.p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.0 }}
+          >
             <a 
-              href="#projects" 
-              className="px-8 py-3 bg-cyber-purple text-white font-medium rounded hover:bg-opacity-90 transition-all duration-300 shadow-[0_0_10px_rgba(90,45,130,0.5)] hover:shadow-[0_0_15px_rgba(90,45,130,0.8)]"
+              href="/resume-sanidhya-soni.pdf" 
+              download="Resume-SanidhyaSoni.pdf"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-cyber-purple text-white font-medium rounded hover:bg-opacity-90 transition-all duration-300 shadow-[0_0_10px_rgba(90,45,130,0.5)] hover:shadow-[0_0_15px_rgba(90,45,130,0.8)] hover:-translate-y-1"
             >
-              Explore My Work
+              <FileText className="h-5 w-5" />
+              Download Resume
             </a>
-            <a 
-              href="#resume" 
-              className="px-8 py-3 border border-cyber-purple text-white font-medium rounded hover:border-cyber-neon hover:text-cyber-neon transition-all duration-300"
-            >
-              View My Resume
-            </a>
-          </div>
+          </motion.div>
         </div>
       </div>
       
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <motion.div 
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 1.5 }}
+      >
         <a href="#about" aria-label="Scroll down">
           <ArrowDownCircle className="h-10 w-10 text-cyber-purple opacity-75 hover:text-cyber-neon hover:opacity-100 transition-colors duration-300" />
         </a>
-      </div>
+      </motion.div>
     </section>
   );
 }

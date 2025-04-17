@@ -1,9 +1,8 @@
-
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { 
   Menu, X, Home, User, Code, Briefcase, Award, 
-  FileText, MessageSquare, BookOpen, GraduationCap 
+  MessageSquare, BookOpen, GraduationCap 
 } from 'lucide-react';
 import { ThemeToggle } from './ui/theme-toggle';
 import { motion } from 'framer-motion';
@@ -16,7 +15,6 @@ const navItems = [
   { name: 'Projects', href: '#projects', icon: <BookOpen className="h-4 w-4" /> },
   { name: 'Certifications', href: '#certifications', icon: <GraduationCap className="h-4 w-4" /> },
   { name: 'Achievements', href: '#achievements', icon: <Award className="h-4 w-4" /> },
-  { name: 'Resume', href: '#resume', icon: <FileText className="h-4 w-4" /> },
   { name: 'Contact', href: '#contact', icon: <MessageSquare className="h-4 w-4" /> },
 ];
 

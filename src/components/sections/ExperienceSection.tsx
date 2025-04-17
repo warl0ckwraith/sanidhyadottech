@@ -1,7 +1,9 @@
+
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { FlipCard } from "../ui/flip-card";
-import { GraduationCap, BookOpen, Shield, Network, Code2, Terminal, Award } from "lucide-react";
+import { motion } from "framer-motion";
+import { Award, BookOpen, GraduationCap, Network } from "lucide-react";
+import { Badge } from "../ui/badge";
 
 const experiences = [
   {
@@ -84,17 +86,7 @@ const education = {
         "Software Security",
         "Digital Forensics"
       ],
-      icon: <Shield className="h-5 w-5" />
-    },
-    {
-      title: "Technical Skills",
-      courses: [
-        "Python Programming",
-        "Operating Systems",
-        "Computer Networks",
-        "Database Security"
-      ],
-      icon: <Code2 className="h-5 w-5" />
+      icon: <Network className="h-5 w-5" />
     },
     {
       title: "Advanced Topics",
@@ -103,8 +95,7 @@ const education = {
         "Malware Analysis",
         "Incident Response",
         "Security Frameworks"
-      ],
-      icon: <Terminal className="h-5 w-5" />
+      ]
     }
   ],
   achievements: [
@@ -114,11 +105,101 @@ const education = {
   ]
 };
 
+// Timeline node component
+const TimelineNode = ({ experience, index, isLast }: { 
+  experience: typeof experiences[0], 
+  index: number, 
+  isLast: boolean 
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  return (
+    <motion.div 
+      className="relative"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true, margin: "-100px" }}
+    >
+      {/* Timeline line */}
+      {!isLast && (
+        <div className="absolute left-8 top-8 w-0.5 h-full bg-gradient-to-b from-cyber-purple/70 to-cyber-purple/10 z-0"></div>
+      )}
+      
+      {/* Timeline node */}
+      <div className="flex items-start gap-6 relative z-10">
+        {/* Date badge */}
+        <div className="flex-shrink-0 w-16 h-16 rounded-full bg-cyber-purple/20 flex items-center justify-center flex-shrink-0 border border-cyber-purple/30">
+          <Badge variant="purple-light" className="text-xs px-2 py-1 whitespace-nowrap">
+            {experience.period.split(' - ')[0]}
+          </Badge>
+        </div>
+        
+        {/* Content */}
+        <div 
+          className={cn(
+            "flex-1 bg-gray-900/50 rounded-lg p-6 border transition-all duration-300",
+            isExpanded 
+              ? "border-cyber-purple shadow-[0_0_15px_rgba(90,45,130,0.3)]" 
+              : "border-gray-800 hover:border-gray-700"
+          )}
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          <div className="mb-3">
+            <h4 className="text-lg font-bold text-white flex flex-wrap items-center gap-2">
+              {experience.title} 
+              <span className="text-cyber-purple">@</span> 
+              <span className="font-normal text-cyber-neon">{experience.company}</span>
+            </h4>
+            
+            <div className="flex flex-wrap justify-between items-center mt-2">
+              <span className="text-gray-400 text-sm">{experience.location}</span>
+              <Badge variant="purple-light" className="text-xs font-medium">
+                {experience.period}
+              </Badge>
+            </div>
+          </div>
+          
+          {/* Expandable achievements */}
+          <div 
+            className={cn(
+              "mt-4 transition-all duration-300 overflow-hidden",
+              isExpanded ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+            )}
+          >
+            <ul className="space-y-3 pt-2 border-t border-gray-700">
+              {experience.achievements.map((achievement, i) => (
+                <li key={i} className="flex items-start">
+                  <span className="text-cyber-purple mr-2 font-mono">→</span>
+                  <span className="text-gray-300">{achievement}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          {/* Click to expand indicator */}
+          <div className="mt-3 text-center">
+            <span className="text-xs text-gray-400">
+              {isExpanded ? "Click to collapse" : "Click to expand"}
+            </span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const EducationCard = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <motion.div 
+      className="max-w-3xl mx-auto"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true, margin: "-100px" }}
+    >
       <div 
         className={cn(
           "bg-gray-900/50 rounded-lg p-6 border border-gray-800 transition-all duration-300",
@@ -140,13 +221,13 @@ const EducationCard = () => {
             <p className="text-cyber-neon font-mono text-sm mb-3">
               {education.university}
             </p>
-            <span className="px-3 py-1 bg-cyber-purple/30 text-cyber-purple text-sm font-semibold rounded-full">
+            <Badge variant="purple-light" className="text-xs font-medium">
               {education.duration}
-            </span>
+            </Badge>
           </div>
         </div>
 
-        {/* Back Content - Animated Expansion */}
+        {/* Expandable Content */}
         <div 
           className={cn(
             "mt-6 overflow-hidden transition-all duration-300",
@@ -155,14 +236,14 @@ const EducationCard = () => {
         >
           <div className="space-y-6">
             {/* Course Highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {education.highlights.map((highlight, index) => (
                 <div 
                   key={index}
                   className="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors"
                 >
                   <div className="flex items-center gap-2 mb-3">
-                    {highlight.icon}
+                    {highlight.icon || <BookOpen className="h-5 w-5 text-cyber-purple" />}
                     <h5 className="text-cyber-purple font-medium">
                       {highlight.title}
                     </h5>
@@ -198,16 +279,13 @@ const EducationCard = () => {
         </div>
 
         {/* Expand/Collapse Indicator */}
-        <div className="mt-4 flex justify-center">
-          <div className="w-8 h-8 rounded-full bg-cyber-purple/20 flex items-center justify-center">
-            <BookOpen className={cn(
-              "h-4 w-4 text-cyber-purple transition-transform duration-300",
-              isExpanded ? "rotate-180" : ""
-            )} />
-          </div>
+        <div className="mt-4 text-center">
+          <span className="text-xs text-gray-400">
+            {isExpanded ? "Click to collapse" : "Click to expand"}
+          </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -224,37 +302,15 @@ export default function ExperienceSection() {
             <span className="block h-1 w-20 bg-cyber-purple mx-auto mt-4"></span>
           </h2>
           
-          {/* Timeline */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {experiences.map((exp) => (
-              <div key={exp.id} className="h-full">
-                <FlipCard 
-                  frontContent={
-                    <>
-                      <h3 className="text-xl font-bold text-white mb-2">{exp.title}</h3>
-                      <h4 className="text-cyber-neon font-mono text-sm mb-1">{exp.company}</h4>
-                      <div className="flex justify-between items-center mt-3">
-                        <span className="text-gray-400 text-sm">{exp.location}</span>
-                        <span className="px-3 py-1 bg-cyber-purple/30 text-cyber-purple text-sm font-semibold rounded-full">
-                          {exp.period}
-                        </span>
-                      </div>
-                    </>
-                  }
-                  backContent={
-                    <>
-                      <ul className="space-y-3">
-                        {exp.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-start">
-                            <span className="text-cyber-purple mr-2 font-mono">→</span>
-                            <span className="text-gray-300">{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  }
-                />
-              </div>
+          {/* Vertical Timeline */}
+          <div className="max-w-4xl mx-auto space-y-12 pl-0 sm:pl-6">
+            {experiences.map((exp, index) => (
+              <TimelineNode 
+                key={exp.id} 
+                experience={exp} 
+                index={index}
+                isLast={index === experiences.length - 1}
+              />
             ))}
           </div>
           

@@ -16,9 +16,9 @@ const badgeVariants = cva(
         destructive:
           "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
         outline: "text-foreground",
-        // Adding new higher contrast variants
+        // Enhanced higher contrast variants
         "purple-light": 
-          "border-cyber-purple/30 bg-cyber-purple/20 text-white dark:text-white font-medium shadow-sm",
+          "border-cyber-purple/50 bg-cyber-purple/40 text-white dark:text-white font-medium shadow-sm shadow-cyber-purple/30",
         "purple-solid": 
           "border-transparent bg-cyber-purple text-white dark:text-white font-medium shadow-sm",
       },

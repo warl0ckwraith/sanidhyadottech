@@ -1,10 +1,10 @@
 
 import * as React from "react"
-import { motion, type MotionProps } from "framer-motion"
+import { motion, HTMLMotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
 
-// Create a custom props interface that extends the motion div props
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+// Create a custom props interface for the Card component
+interface CardProps extends Omit<HTMLMotionProps<"div">, "ref"> {
   className?: string;
 }
 
@@ -17,6 +17,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         className
       )}
       whileHover={{ scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 400, damping: 30 }}
       {...props}
     />
   )
