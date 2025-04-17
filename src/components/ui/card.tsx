@@ -1,10 +1,10 @@
 
 import * as React from "react"
-import { motion, type HTMLMotionProps } from "framer-motion"
+import { motion, type MotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 // Create a custom props interface that extends the motion div props
-interface CardProps extends Omit<HTMLMotionProps<"div">, "ref"> {
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
