@@ -1,8 +1,9 @@
 
 import { useState, useEffect } from "react";
-import { ArrowDownCircle, FileText } from "lucide-react";
+import { ArrowDownCircle, FileText, MessageSquare } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { motion } from "framer-motion";
+import { Button } from "../ui/button";
 
 export default function HeroSection() {
   const [loaded, setLoaded] = useState(false);
@@ -10,6 +11,13 @@ export default function HeroSection() {
   useEffect(() => {
     setLoaded(true);
   }, []);
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   
   return (
     <section 
@@ -85,15 +93,24 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.0 }}
+            className="flex flex-wrap gap-4"
           >
             <a 
               href="/resume-sanidhya-soni.pdf" 
               download="Resume-SanidhyaSoni.pdf"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-cyber-purple text-white font-medium rounded hover:bg-opacity-90 transition-all duration-300 shadow-[0_0_10px_rgba(90,45,130,0.5)] hover:shadow-[0_0_15px_rgba(90,45,130,0.8)] hover:-translate-y-1"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-cyber-purple text-white font-medium rounded hover:bg-cyber-purple/80 transition-all duration-300 shadow-[0_0_10px_rgba(90,45,130,0.5)] hover:shadow-[0_0_15px_rgba(90,45,130,0.8)] hover:-translate-y-1"
             >
               <FileText className="h-5 w-5" />
               Download Resume
             </a>
+            
+            <button 
+              onClick={scrollToContact}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-transparent border border-cyber-purple text-cyber-purple font-medium rounded hover:bg-cyber-purple hover:text-white transition-all duration-300 hover:shadow-[0_0_15px_rgba(90,45,130,0.8)] hover:-translate-y-1"
+            >
+              <MessageSquare className="h-5 w-5" />
+              Say Hello
+            </button>
           </motion.div>
         </div>
       </div>

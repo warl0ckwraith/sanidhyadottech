@@ -14,7 +14,13 @@ export function ThemeToggle() {
   // Ensure this component only renders after mounted to prevent hydration issues
   useEffect(() => {
     setMounted(true);
-  }, []);
+
+    // Check system preference
+    if (!localStorage.getItem("sanidhya-portfolio-theme")) {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setTheme(prefersDark ? "dark" : "light");
+    }
+  }, [setTheme]);
 
   if (!mounted) return null;
 
@@ -28,7 +34,7 @@ export function ThemeToggle() {
         size="icon"
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
         className="rounded-full bg-background/10 backdrop-blur-sm border border-border/30 hover:bg-background/20 transition-all"
-        aria-label="Toggle theme"
+        aria-label={theme === "light" ? "Switch to dark theme" : "Switch to light theme"}
       >
         {theme === "light" ? (
           <Moon className="h-5 w-5 text-foreground" />

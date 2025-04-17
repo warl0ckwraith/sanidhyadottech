@@ -3,7 +3,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUp } from 'lucide-react';
+import { ChevronUp } from 'lucide-react';
 
 export function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,18 +32,18 @@ export function BackToTop() {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          className="fixed bottom-8 right-8 p-3 rounded-full bg-cyber-purple/20 backdrop-blur-sm border border-cyber-purple/30 text-cyber-purple hover:bg-cyber-purple/30 hover:border-cyber-purple/50 hover:shadow-[0_0_15px_rgba(90,45,130,0.5)] transition-all z-50"
+          className="fixed bottom-6 right-6 p-3 rounded-full bg-black/60 backdrop-blur-sm border-2 border-[#f5f1e8]/50 text-[#f5f1e8] hover:bg-black/80 hover:border-[#f5f1e8]/70 transition-all z-50 w-12 h-12 flex items-center justify-center shadow-[0_0_8px_2px_rgba(245,241,232,0.6)] hover:shadow-[0_0_12px_4px_rgba(245,241,232,0.8)]"
           onClick={scrollToTop}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          aria-label="Scroll to top"
+          aria-label="Back to top"
         >
-          <ArrowUp className="h-5 w-5" />
+          <ChevronUp className="h-5 w-5" />
         </motion.button>
       )}
     </AnimatePresence>
   );
-} 
+}

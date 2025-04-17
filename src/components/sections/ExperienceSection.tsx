@@ -7,6 +7,19 @@ import { Badge } from "../ui/badge";
 
 const experiences = [
   {
+    id: 3,
+    title: "Independent Contractor / Freelancer",
+    company: "Security Testing & CTF Development",
+    location: "Remote",
+    period: "Ongoing",
+    description: "Engaged in developing scalable CTF infrastructure, security assessments, and digital forensics challenges for various organizations and security events.",
+    achievements: [
+      "Developed scalable CTF infrastructure for security competitions",
+      "Conducted comprehensive security assessments for clients",
+      "Created digital forensics challenges for security conferences"
+    ]
+  },
+  {
     id: 1,
     title: "Cyber Security Engineer Intern",
     company: "DGTA, Indian Army",
@@ -30,19 +43,6 @@ const experiences = [
       "Developed an Android pentesting & exploitation framework",
       "Created security challenges in privilege escalation, web security, and forensics using Docker",
       "Collaborated in red/blue/purple team exercises focusing on AD enumeration and threat detection"
-    ]
-  },
-  {
-    id: 3,
-    title: "Independent Contractor / Freelancer",
-    company: "Security Testing & CTF Development",
-    location: "Remote",
-    period: "Ongoing",
-    description: "Engaged in developing scalable CTF infrastructure, security assessments, and digital forensics challenges for various organizations and security events.",
-    achievements: [
-      "Developed scalable CTF infrastructure for security competitions",
-      "Conducted comprehensive security assessments for clients",
-      "Created digital forensics challenges for security conferences"
     ]
   },
   {

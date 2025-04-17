@@ -59,7 +59,7 @@ export default function ProjectsSection() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">
             <span className="text-white">Projects</span>
-            <span className="text-cyber-purple"> & CTF Challenges</span>
+            <span className="text-cyber-purple"> & Volunteering</span>
             <span className="block h-1 w-20 bg-cyber-purple mx-auto mt-4"></span>
           </h2>
           
