@@ -1,8 +1,8 @@
-
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { 
-  Menu, X, User, Briefcase, BookOpen, MessageSquare
+  Menu, X, User, Briefcase, BookOpen, MessageSquare,
+  Book
 } from 'lucide-react';
 import { ThemeToggle } from './ui/theme-toggle';
 import { motion } from 'framer-motion';
@@ -12,6 +12,8 @@ const navItems = [
   { name: 'Experience', href: '#experience', icon: <Briefcase className="h-4 w-4" />, shortLabel: '🕒' },
   { name: 'Work', href: '#projects', icon: <BookOpen className="h-4 w-4" />, shortLabel: '📁' },
   { name: 'Contact', href: '#contact', icon: <MessageSquare className="h-4 w-4" />, shortLabel: '✉️' },
+  { name: 'Blog', href: '#blog', icon: <BookOpen className="h-4 w-4" />, shortLabel: '📚' },
+
 ];
 
 export default function Navbar() {

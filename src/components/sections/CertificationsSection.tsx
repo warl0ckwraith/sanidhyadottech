@@ -12,8 +12,7 @@ const certifications = [
     organization: "OffSec",
     date: "2023",
     logo: "oscp",
-    verifyLink: "https://www.credential.net/verify",
-    certificateImage: "https://via.placeholder.com/800x600?text=OSCP+Certificate"
+    verifyLink: "https://www.credential.net/ea6beae4-9282-4c1d-9bbc-13efaa15b832",
   },
   {
     id: 2,
@@ -21,8 +20,7 @@ const certifications = [
     organization: "OffSec",
     date: "2023",
     logo: "owsp",
-    verifyLink: "https://www.credential.net/verify",
-    certificateImage: "https://via.placeholder.com/800x600?text=OWSP+Certificate"
+    verifyLink: "https://www.credential.net/e1677b26-b944-4aae-99c0-ac34bb1ebb8f",
   },
   {
     id: 3,
@@ -30,8 +28,7 @@ const certifications = [
     organization: "Network Security Institute",
     date: "2022",
     logo: "cnsp",
-    verifyLink: "https://www.example.com/verify",
-    certificateImage: "https://via.placeholder.com/800x600?text=CNSP+Certificate"
+    verifyLink: "https://candidate.speedexam.net/certificate.aspx?SSTATE=am4131EniU8ntjp4bO5mXTHb++lDiZvEBDD0QEpKsbUFhClttZdVAknN3CoXNvVkebndg2pYVHS6ev+q5Blht5sIxrULNGWX/SmqRAu1TLk=",
   },
   {
     id: 4,
@@ -40,7 +37,6 @@ const certifications = [
     date: "2022",
     logo: "fortinet",
     verifyLink: "https://www.fortinet.com/training/certification/verification",
-    certificateImage: "https://via.placeholder.com/800x600?text=Fortinet+Certificate"
   }
 ];
 
@@ -72,14 +68,6 @@ const CertificateModal = ({ cert, isOpen, onClose }) => {
           <X className="h-5 w-5 text-gray-300" />
         </motion.button>
 
-        {/* Certificate Image */}
-        <div className="p-4">
-          <img 
-            src={cert.certificateImage} 
-            alt={`${cert.name} Certificate`}
-            className="w-full h-auto rounded-lg shadow-lg"
-          />
-        </div>
 
         {/* Certificate Info */}
         <div className="p-6 bg-gray-800/50">

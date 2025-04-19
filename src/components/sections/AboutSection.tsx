@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 
 export default function AboutSection() {
@@ -20,20 +19,20 @@ export default function AboutSection() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true, margin: "-100px" }}
           >
+            <p className="text-gray-300 text-lg leading-relaxed mb-6 font-bold">
+              Hey! I'm Sanidhya Soni — I break things (ethically), build challenges, and love all things offensive security.
+            </p>
+
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              Hello! My name is Sanidhya Soni and I love diving into the hidden corners of the internet. 
-              My obsession with cybersecurity started when I first cracked open Wireshark during a university lab—turns out 
-              packet sniffing taught me more about networks than any textbook ever could!
+              My journey into cybersecurity started during college when I opened Wireshark for the first time — and instantly got hooked. Since then, I've been deep into red teaming, exploit development, and creating CTFs that (hopefully) confuse and challenge others the way I was when I started out.
             </p>
             
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              Since then, I've interned with military cyber units, did some pentesting & red teaming, and created many CTF challenges. 
-              I've spent countless hours in both offensive and defensive positions, learning to think like adversaries do.
+              I've worked with military cyber units, collaborated on red team projects, and built tons of CTF challenges for conferences and companies. I love understanding how attackers think and using that mindset to design better defenses — or better traps.
             </p>
             
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              Now, I spend my days designing security frameworks, building educational tools for future security professionals, 
-              and occasionally participating in CTF competitions to keep my skills sharp.
+              Right now, I spend most of my time building security labs, testing systems, and occasionally jumping into CTFs just to keep myself sharp (and have a little fun).
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 items-start justify-between mt-8">

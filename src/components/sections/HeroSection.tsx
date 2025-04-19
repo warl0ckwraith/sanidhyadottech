@@ -77,7 +77,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            I help making internet a secure place.
+            I am into Security & CTFs.
           </motion.h2>
           
           <motion.p 
@@ -86,7 +86,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
           >
-            I'm a security engineer who builds pentesting frameworks, CTF challenges, and training tools that make enterprise systems safer.
+            A learning security engineer who does pentesting, CTF challenges, and research on adversary emulation.
           </motion.p>
           
           <motion.div

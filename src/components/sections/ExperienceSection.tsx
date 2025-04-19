@@ -75,33 +75,31 @@ const experiences = [
 
 const education = {
   degree: "B.Tech in Computer Science Engineering (Cyber Security & Digital Forensics)",
-  university: "VIT Bhopal University, Bhopal, MP",
+  university: "VIT Bhopal University, India",
   duration: "2022 - Present",
   highlights: [
     {
-      title: "Core Cybersecurity",
+      title: "Core Subjects",
       courses: [
-        "Network Security",
-        "Web Security",
-        "Software Security",
+        "Computer Networks",
+        "Database Systems",
+        "Operating Systems",
         "Digital Forensics"
       ],
       icon: <Network className="h-5 w-5" />
     },
     {
-      title: "Advanced Topics",
+      title: "Advanced Courses",
       courses: [
-        "Penetration Testing",
-        "Malware Analysis",
-        "Incident Response",
+        "Ethical Hacking",
+        "Software Vulnerability Testing",
+        "Data Privacy",
         "Security Frameworks"
       ]
     }
   ],
   achievements: [
-    "Dean's List - Fall 2023",
-    "Top 5% in Cybersecurity Projects",
-    "Research Assistant - Network Security Lab"
+    "President of OWASP VIT Bhopal Chapter",
   ]
 };
 

@@ -8,21 +8,21 @@ const projects = [
   {
     id: 1,
     title: "CTF Challenges - Vulncon",
-    category: "Security Challenges",
+    category: "CTF Development",
     description: "Developed digital forensics based CTF challenges for Vulncon Security Conference in Bengaluru, focusing on real-world security scenarios and practical exploitation techniques.",
     technologies: ["Docker", "Python", "Digital Forensics", "Linux"],
   },
   {
     id: 2,
-    title: "BSides Mumbai Challenges",
+    title: "CTF Challenges - BSides Mumbai",
     category: "CTF Development",
     description: "Created diverse CTF challenges for BSides Mumbai 2024, covering areas such as web exploitation, reverse engineering, cryptography, and network security.",
     technologies: ["Docker", "YAML", "JavaScript", "Python"],
   },
   {
     id: 3,
-    title: "BSides Indore Challenges",
-    category: "Forensics",
+    title: "CTF Challenges - BSides Indore",
+    category: "CTF Development",
     description: "Designed and implemented digital forensics based CTF challenges for the BSides Indore onsite event, enhancing participant engagement and learning.",
     technologies: ["Python", "Memory Forensics", "Disk Forensics"],
   },
@@ -36,7 +36,7 @@ const projects = [
   {
     id: 5,
     title: "Security Workshop - JECRC University",
-    category: "Education",
+    category: "Speaker",
     description: "Conducted training sessions as a Workshop Speaker in Cyber Security at JECRC University, Jaipur in collaboration with CyberSecuredIndia, Aspire For Her, and Infosys.",
     technologies: ["Security Training", "Workshops", "Cybersecurity"],
   }

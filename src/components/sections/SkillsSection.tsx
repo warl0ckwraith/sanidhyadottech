@@ -5,57 +5,46 @@ import {
   Network, Wifi, Database, GitBranch,
   // Dock is not available in lucide-react
   // Using alternative icons for Docker and other tools
-  Box, // For Docker instead of Dock
+  Box,
+  Cloud,
+  Globe2,
+  LucideNetwork, // For Docker instead of Dock
   // Removed Python, Java, Cpp, Php, Mysql, Bash, Kotlin, Burpsuite, Wireshark, Metasploit, Aircrack
   // as they don't exist in lucide-react
 } from "lucide-react";
 
 const skills = {
-  languages: [
+  technologies: [
     { name: "Python", icon: <Code2 className="h-5 w-5" />, level: "core" },
     { name: "PHP", icon: <Code2 className="h-5 w-5" />, level: "secondary" },
     { name: "MySQL", icon: <Database className="h-5 w-5" />, level: "secondary" },
     { name: "Bash", icon: <Terminal className="h-5 w-5" />, level: "core" },
     { name: "C++", icon: <Code2 className="h-5 w-5" />, level: "secondary" },
     { name: "Java", icon: <Code2 className="h-5 w-5" />, level: "secondary" },
-    { name: "Kotlin", icon: <Code2 className="h-5 w-5" />, level: "secondary" }
+    { name: "Kotlin", icon: <Code2 className="h-5 w-5" />, level: "secondary" },
+    { name: "Docker", icon: <Box className="h-5 w-5" />, level: "core" },
+    { name: "AWS", icon: <Cloud className="h-5 w-5" />, level: "secondary" },
+
   ],
   tools: [
     { name: "Git", icon: <GitBranch className="h-5 w-5" />, level: "core" },
-    { name: "Docker", icon: <Box className="h-5 w-5" />, level: "core" },
-    { name: "Burpsuite", icon: <Code2 className="h-5 w-5" />, level: "core" },
-    { name: "Wireshark", icon: <Code2 className="h-5 w-5" />, level: "core" },
+    { name: "Burpsuite", icon: <Globe2 className="h-5 w-5" />, level: "core" },
+    { name: "Wireshark", icon: <LucideNetwork className="h-5 w-5" />, level: "core" },
     { name: "Metasploit", icon: <Code2 className="h-5 w-5" />, level: "core" },
-    { name: "Aircrack-ng", icon: <Code2 className="h-5 w-5" />, level: "secondary" }
+    { name: "Crackmapexec", icon: <Code2 className="h-5 w-5" />, level: "secondary" },
+    { name: "Bloodhound", icon: <Code2 className="h-5 w-5" />, level: "secondary" },
+
   ],
   specializations: [
     { name: "Network Pentesting", icon: <Network className="h-5 w-5" />, level: "core" },
     { name: "Active Directory", icon: <Database className="h-5 w-5" />, level: "core" },
     { name: "Web Security", icon: <Code2 className="h-5 w-5" />, level: "core" },
     { name: "Wireless Security", icon: <Wifi className="h-5 w-5" />, level: "secondary" },
-    { name: "Source Code Review", icon: <Terminal className="h-5 w-5" />, level: "secondary" }
-  ],
-  professional: [
-    {
-      title: "Security Research",
-      icon: <Shield className="h-5 w-5" />,
-      description: "Specializing in vulnerability assessment, exploit development, and security auditing"
-    },
-    {
-      title: "Red Team Operations",
-      icon: <Bug className="h-5 w-5" />,
-      description: "Expertise in planning and executing red team exercises including social engineering campaigns"
-    },
-    {
-      title: "CTF Development",
-      icon: <Code2 className="h-5 w-5" />,
-      description: "Created numerous CTF challenges for security conferences and events"
-    },
-    {
-      title: "Digital Forensics",
-      icon: <Terminal className="h-5 w-5" />,
-      description: "Specialized in evidence collection, disk imaging, and malware behavior analysis"
-    }
+    { name: "Source Code Review", icon: <Terminal className="h-5 w-5" />, level: "secondary" },
+    { name: "Red Team Operations", icon: <Terminal className="h-5 w-5" />, level: "core" },
+    { name: "CTF Development", icon: <Code2 className="h-5 w-5" />, level: "core" },
+    { name: "Digital Forensics", icon: <Box className="h-5 w-5" />, level: "secondary" },  
+ 
   ]
 };
 
@@ -77,7 +66,7 @@ export default function SkillsSection() {
           
           {/* Filter Tags */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {["all", "languages", "tools", "specializations", "professional"].map((category) => (
+            {["all", "technologies", "tools", "specializations", "professional"].map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
@@ -98,13 +87,13 @@ export default function SkillsSection() {
               {/* Left Column */}
               <div className="space-y-8">
                 {/* Languages */}
-                <div className={cn("space-y-4", activeCategory !== "all" && activeCategory !== "languages" && "hidden")}>
+                <div className={cn("space-y-4", activeCategory !== "all" && activeCategory !== "technologies" && "hidden")}>
                   <h3 className="text-lg font-medium text-white flex items-center">
                     <Code2 className="h-5 w-5 text-cyber-purple mr-2" />
                     Languages
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {skills.languages.map((skill) => (
+                    {skills.technologies.map((skill) => (
                       <div
                         key={skill.name}
                         className={cn(
@@ -173,12 +162,12 @@ export default function SkillsSection() {
                 </div>
                 
                 {/* Professional Competence */}
-                <div className={cn("space-y-4", activeCategory !== "all" && activeCategory !== "professional" && "hidden")}>
+                {/* <div className={cn("space-y-4", activeCategory !== "all" && activeCategory !== "professional" && "hidden")}>
                   <h3 className="text-lg font-medium text-white flex items-center">
-                    <Bug className="h-5 w-5 text-cyber-purple mr-2" />
-                    Professional Competence
-                  </h3>
-                  <div className="space-y-3">
+                    <Bug className="h-5 w-5 text-cyber-purple mr-2" /> */}
+                    {/* Professional Competence */}
+                  {/* </h3> */}
+                  {/* <div className="space-y-3">
                     {skills.professional.map((skill) => (
                       <div
                         key={skill.title}
@@ -197,8 +186,8 @@ export default function SkillsSection() {
                         )}
                       </div>
                     ))}
-                  </div>
-                </div>
+                  </div> */}
+                {/* </div> */}
               </div>
             </div>
           </div>

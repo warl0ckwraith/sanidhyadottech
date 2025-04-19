@@ -79,45 +79,6 @@ export default function ContactSection() {
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-cyber-purple/20 rounded-full">
-                    <Globe className="h-5 w-5 text-cyber-purple" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium">Website</h4>
-                    <a href="https://sanidhya.tech" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-cyber-neon transition-colors">
-                      sanidhya.tech
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-cyber-purple/20 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyber-purple">
-                      <path d="M11 5.1a5 5 0 0 1 8.9 3v.1a5 5 0 0 1-1.7 3.8l-8.3 7.2-8.2-7.2A5 5 0 0 1 0 8v-.1a5 5 0 0 1 5-5c1.5 0 3 .7 4 1.9l1 1.3 1-1.3a5 5 0 0 1 4-1.9" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium">Upwork</h4>
-                    <a href="https://www.upwork.com/freelancers/sanidhya" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-cyber-neon transition-colors">
-                      upwork.com/freelancers/sanidhya
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-cyber-purple/20 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyber-purple">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium">Phone</h4>
-                    <a href="tel:+919024095926" className="text-gray-300 hover:text-cyber-neon transition-colors">
-                      +91-9024095926
-                    </a>
-                  </div>
-                </div>
                 
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-cyber-purple/20 rounded-full">
