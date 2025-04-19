@@ -2,27 +2,23 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { 
-  Menu, X, Home, User, Briefcase, BookOpen, Award, 
-  MessageSquare, ChevronUp
+  Menu, X, User, Briefcase, BookOpen, MessageSquare
 } from 'lucide-react';
 import { ThemeToggle } from './ui/theme-toggle';
 import { motion } from 'framer-motion';
 
 const navItems = [
-  { name: 'Home', href: '#home', icon: <Home className="h-4 w-4" />, shortLabel: '🏠' },
   { name: 'About', href: '#about', icon: <User className="h-4 w-4" />, shortLabel: '👤' },
-  { name: 'Exp', href: '#experience', icon: <Briefcase className="h-4 w-4" />, shortLabel: '🕒' },
-  { name: 'Proj', href: '#projects', icon: <BookOpen className="h-4 w-4" />, shortLabel: '📁' },
-  { name: 'Awards', href: '#achievements', icon: <Award className="h-4 w-4" />, shortLabel: '🏆' },
+  { name: 'Experience', href: '#experience', icon: <Briefcase className="h-4 w-4" />, shortLabel: '🕒' },
+  { name: 'Work', href: '#projects', icon: <BookOpen className="h-4 w-4" />, shortLabel: '📁' },
   { name: 'Contact', href: '#contact', icon: <MessageSquare className="h-4 w-4" />, shortLabel: '✉️' },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('about');
   
-  // Handle scroll for navbar transparency
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -30,20 +26,16 @@ export default function Navbar() {
       } else {
         setScrolled(false);
       }
-      
-      // Find active section based on scroll position
       const sections = document.querySelectorAll('section');
       sections.forEach(section => {
         const sectionTop = section.offsetTop - 100;
         const sectionHeight = section.clientHeight;
         const id = section.getAttribute('id');
-        
         if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight && id) {
           setActiveSection(id);
         }
       });
     };
-    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -61,18 +53,17 @@ export default function Navbar() {
       <div className="container mx-auto px-4 h-full flex items-center justify-between">
         {/* Logo */}
         <motion.a 
-          href="#home" 
+          href="#about"
           className="font-mono font-bold text-lg tracking-tight text-white relative group"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          aria-label="Home"
+          aria-label="About"
         >
           <span className="relative z-10 group-hover:text-cyber-neon transition-colors duration-200">
             SS
           </span>
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyber-neon group-hover:w-full transition-all duration-300"></span>
         </motion.a>
-        
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           {navItems.map((item) => (
@@ -91,6 +82,7 @@ export default function Navbar() {
             >
               <span className="flex items-center gap-1.5">
                 <span>{item.shortLabel}</span>
+                <span>{item.name}</span>
               </span>
               <span 
                 className={cn(
@@ -101,12 +93,9 @@ export default function Navbar() {
             </motion.a>
           ))}
         </nav>
-        
         {/* Theme Toggle and Mobile Menu Button */}
         <div className="flex items-center gap-4">
           <ThemeToggle />
-          
-          {/* Mobile Menu Button */}
           <motion.button 
             className="md:hidden text-[#c0bfe0] hover:text-white"
             onClick={() => setIsOpen(!isOpen)}
@@ -118,7 +107,6 @@ export default function Navbar() {
           </motion.button>
         </div>
       </div>
-      
       {/* Mobile Menu */}
       <div 
         className={cn(

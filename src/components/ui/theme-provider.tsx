@@ -3,7 +3,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "dark" | "light" | "system";
+type Theme = "dark" | "light";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: "system",
+  theme: "dark",
   setTheme: () => null,
 };
 
@@ -25,40 +25,45 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = "system",
-  storageKey = "sanidhya-portfolio-theme",
+  defaultTheme = "dark",
+  storageKey = "themePreference",
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
-  );
+  const getInitialTheme = (): Theme => {
+    if (typeof window === "undefined") return defaultTheme;
+    const stored = localStorage.getItem(storageKey) as Theme | null;
+    if (stored === "light" || stored === "dark") return stored;
+    // fallback to system pref
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return prefersDark ? "dark" : "light";
+  };
+
+  const [theme, setThemeState] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove("light", "dark");
+    // Update class immediately and persist
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(theme);
+    localStorage.setItem(storageKey, theme);
+  }, [theme, storageKey]);
 
-    if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light";
-      root.classList.add(systemTheme);
-      return;
-    }
-
-    root.classList.add(theme);
-  }, [theme]);
-
-  const value = {
-    theme,
-    setTheme: (theme: Theme) => {
+  useEffect(() => {
+    // Set theme on first load if previously unset
+    if (!localStorage.getItem(storageKey)) {
       localStorage.setItem(storageKey, theme);
-      setTheme(theme);
-    },
+    }
+  }, [theme, storageKey]);
+
+  const setTheme = (t: Theme) => {
+    setThemeState(t);
+    // Update class instantly
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(t);
+    localStorage.setItem(storageKey, t);
   };
 
   return (
-    <ThemeProviderContext.Provider {...props} value={value}>
+    <ThemeProviderContext.Provider {...props} value={{ theme, setTheme }}>
       {children}
     </ThemeProviderContext.Provider>
   );
@@ -66,9 +71,7 @@ export function ThemeProvider({
 
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext);
-
   if (context === undefined)
     throw new Error("useTheme must be used within a ThemeProvider");
-
   return context;
 };
