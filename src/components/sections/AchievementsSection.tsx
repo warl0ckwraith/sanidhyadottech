@@ -1,10 +1,8 @@
 
-import { useState } from "react";
+import { useRef, useCallback, useEffect, useState } from "react";
 import { Award, BadgeCheck } from "lucide-react";
-import { AchievementDrawerPanel } from "./AchievementDrawerPanel";
-import { useDebouncedPanel } from "./useDebouncedPanel";
+import AwardsModal from "./AwardsModal";
 
-// Awards data - uniform, concise bullets.
 const ctfAchievements = [
   "1st Place (Winner), Territorial Army (TCQ CTF), 2024",
   "Top National Finalist, IIT Patna CTF, 2023",
@@ -21,7 +19,7 @@ const bugBountyAchievements = [
   "Hall of Fame, airtame.com (2022)",
   "Appreciation, IndiaMart & NCIIPC (Govt. of India) (2022)"
 ];
-const otherAchievements = [];
+const otherAchievements: string[] = [];
 
 const cards = [
   {
@@ -44,20 +42,51 @@ const cards = [
   }
 ];
 
+// Debounce helper
+const useDebouncedFunction = (fn: (...args: any[]) => void, delay = 250) => {
+  const timer = useRef<NodeJS.Timeout | null>(null);
+  const isLocked = useRef(false);
+  return useCallback((...args: any[]) => {
+    if (isLocked.current) return;
+    isLocked.current = true;
+    fn(...args);
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      isLocked.current = false;
+    }, delay);
+  }, [fn, delay]);
+};
+
 export default function AchievementsSection() {
-  // Only one open at a time; null when none.
-  const [openPanelIdx, setOpenPanelIdx] = useState<null | number>(null);
+  // Single modal state: {title, items} or null if closed
+  const [modalData, setModalData] = useState<{ title: string; items: string[] } | null>(null);
 
-  // Debounce open/close to avoid stacking/flicker.
-  const handlePanelOpen = useDebouncedPanel((idx: number) => {
-    if (openPanelIdx === idx) {
-      setOpenPanelIdx(null);
-    } else {
-      setOpenPanelIdx(idx);
-    }
-  }, 200);
+  // Trap focus when modal is open, allow Esc to close
+  useEffect(() => {
+    if (!modalData) return;
 
-  const handlePanelClose = useDebouncedPanel(() => setOpenPanelIdx(null), 200);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setModalData(null);
+    };
+
+    document.body.style.overflow = "hidden"; // Prevent background scroll
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = ""; // Restore scroll
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [modalData]);
+
+  // Debounced modal opener
+  const handleOpenModal = useDebouncedFunction((cardIdx: number) => {
+    const card = cards[cardIdx];
+    if (!card || !card.items) return;
+    setModalData({ title: card.title, items: card.items });
+  }, 250);
+
+  // Close modal precisely
+  const handleCloseModal = () => setModalData(null);
 
   return (
     <section id="achievements" className="py-24 bg-black relative">
@@ -71,8 +100,9 @@ export default function AchievementsSection() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {cards.map((card, idx) => (
-              <div
+              <button
                 key={card.title}
+                type="button"
                 role="region"
                 aria-label={card.ariaLabel}
                 className={`
@@ -86,47 +116,47 @@ export default function AchievementsSection() {
                   hover:-translate-y-0.5
                   hover:shadow-[0_4px_24px_rgba(162,89,255,0.18)]
                   hover:border-cyber-purple/70
-                  transition-all duration-250
+                  focus-visible:ring-2 focus-visible:ring-cyber-purple
                   cursor-pointer
+                  w-full
+                  flex flex-col items-center justify-center
                   ${idx === 2 ? "border-dashed border-2" : ""}
                 `}
-                onClick={() => card.items.length !== 0 && handlePanelOpen(idx)}
+                disabled={card.items.length === 0}
                 tabIndex={card.items.length === 0 ? -1 : 0}
                 style={{
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0,0,0,0.5)",
-                  fontFamily: "inherit",
-                  outline: idx === openPanelIdx ? "2px solid #5A2D82" : "none"
+                  fontFamily: "inherit"
                 }}
-                aria-disabled={card.items.length === 0}
+                onClick={() => card.items.length !== 0 && handleOpenModal(idx)}
                 onKeyDown={e => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    if (card.items.length !== 0) handlePanelOpen(idx);
+                  if ((e.key === "Enter" || e.key === " ") && card.items.length !== 0) {
+                    handleOpenModal(idx);
                   }
                 }}
               >
-                <div className="flex flex-col items-center gap-5 py-10 px-4 select-none">
+                <div className="flex flex-col items-center gap-5 py-10 px-4 select-none w-full">
                   {card.icon}
                   <span className="uppercase tracking-[0.05em] text-[#e0dfff] font-bold text-lg md:text-xl text-center">{card.title}</span>
                   {idx === 2 && (
                     <span className="text-[#c0bfe0] text-center italic opacity-60 mt-5">Coming Soon</span>
                   )}
                 </div>
-                {/* Panel (mounted always, but animated) */}
-                {openPanelIdx === idx && (
-                  <AchievementDrawerPanel
-                    title={card.title}
-                    items={card.items}
-                    open={openPanelIdx === idx}
-                    onClose={handlePanelClose}
-                    side="right"
-                  />
-                )}
-              </div>
+              </button>
             ))}
           </div>
         </div>
       </div>
+      {/* Unified Modal (single instance) */}
+      {modalData && (
+        <AwardsModal
+          title={modalData.title}
+          items={modalData.items}
+          isOpen={!!modalData}
+          onClose={handleCloseModal}
+        />
+      )}
     </section>
   );
 }
