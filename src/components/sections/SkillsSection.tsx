@@ -66,7 +66,7 @@ export default function SkillsSection() {
           
           {/* Filter Tags */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {["all", "technologies", "tools", "specializations", "professional"].map((category) => (
+            {["all", "technologies", "tools", "specializations"].map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
