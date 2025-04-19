@@ -1,26 +1,28 @@
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Award, BadgeCheck } from "lucide-react";
-import AchievementsModal from "./AchievementsModal";
+import { AchievementDrawerPanel } from "./AchievementDrawerPanel";
 
-// Data for achievements categories
+// Awards data: concise, bulleted format for clarity/readability
 const ctfAchievements = [
-  "1st Place (Winner) at the CTF Organized by Indian Territorial Army (TCQ) in 2024",
-  "Top National Finalist at the CTF organized by IIT Patna in 2023",
-  "1st Place (Winner) at the CTF Organized by IIT Bhubneshwar in 2022",
-  "2nd Place at the CTF Organized by IIT Madras and 2nd Place at the CTF Organized by BITS, Hyderabad in 2023",
-  "3rd Place at the CTF Organized by Data Security Council of India (DSCI) and 3rd Place at the CTF Organized by IIT Roorkee in 2023",
-  "Top National Finalist at the National CTF by TrustLab, IIT Bombay and Top National Finalist at the Embedded Security CTF by IIT Madras & DSCI in 2022"
+  "1st Place (Winner), Territorial Army (TCQ CTF), 2024",
+  "Top National Finalist, IIT Patna CTF, 2023",
+  "1st Place (Winner), IIT Bhubneshwar CTF, 2022",
+  "2nd Place, IIT Madras CTF, 2023",
+  "2nd Place, BITS Hyderabad CTF, 2023",
+  "3rd Place, DSCI CTF, 2023",
+  "3rd Place, IIT Roorkee CTF, 2023",
+  "Top National Finalist, TrustLab CTF (IIT Bombay), 2022",
+  "Top National Finalist, Embedded Security CTF (IIT Madras & DSCI), 2022"
 ];
 
 const bugBountyAchievements = [
-  "Received bounty and certificate of appreciation for identifying and reporting security vulnerabilities in PhysicsWallah & Talent.com (2022)",
-  "Listed in the Hall of Fame for responsible disclosure of security vulnerabilities in airtame.com (2022)",
-  "Received appreciation for security contributions and vulnerability reporting from IndiaMart & NCIIPC (Government of India) (2022)"
+  "Bounty & Certificate, vulnerabilities in PhysicsWallah & Talent.com (2022)",
+  "Hall of Fame, airtame.com (2022)",
+  "Appreciation, IndiaMart & NCIIPC (Govt. of India) (2022)"
 ];
 
-const otherAchievements = []; // Placeholder for future
+const otherAchievements: string[] = [];
 
 const cards = [
   {
@@ -44,7 +46,7 @@ const cards = [
 ];
 
 export default function AchievementsSection() {
-  const [openModal, setOpenModal] = useState(null as null | number);
+  const [openPanelIdx, setOpenPanelIdx] = useState<null | number>(null);
 
   return (
     <section id="achievements" className="py-24 bg-black relative">
@@ -56,23 +58,26 @@ export default function AchievementsSection() {
             <span className="text-cyber-purple"> Achievements</span>
             <span className="block h-1 w-20 bg-cyber-purple mx-auto mt-4"></span>
           </h2>
-          {/* Three Card Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {cards.map((card, idx) => (
-              <motion.div
+              <div
                 key={card.title}
                 role="region"
                 aria-label={card.ariaLabel}
-                className="select-none"
-                whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(90, 45, 130, 0.3)" }}
+                className={`group transition-all`}
               >
                 <button
                   type="button"
-                  className={`group w-full h-full bg-gradient-to-b from-[#111] to-[#1a1a1a] border-gray-800 rounded-lg shadow-lg border hover:shadow-[0_0_15px_rgba(162,89,255,0.7)] hover:border-cyber-purple/70 transition-all duration-300 outline-none focus:ring-2 focus:ring-cyber-purple/80 flex flex-col justify-between items-center py-12 px-4 ${idx === 2 ? "border-dashed" : ""}`}
-                  onClick={() => idx !== 2 ? setOpenModal(idx) : null}
-                  tabIndex={0}
+                  className={`w-full h-full bg-gradient-to-b from-[#111] to-[#1a1a1a] border-gray-800 rounded-lg shadow-lg border hover:shadow-[0_4px_24px_rgba(162,89,255,0.24)] hover:border-cyber-purple/70 transition-all duration-300 outline-none focus:ring-2 focus:ring-cyber-purple flex flex-col justify-between items-center py-12 px-4 ${idx === 2 ? "border-dashed" : ""}`}
+                  onClick={() => idx !== 2 ? setOpenPanelIdx(idx) : null}
                   aria-label={card.title + " details"}
+                  tabIndex={0}
                   disabled={idx === 2}
+                  style={{
+                    borderRadius: "8px",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.5)",
+                    fontFamily: "inherit",
+                  }}
                 >
                   <div className="flex flex-col items-center gap-4">
                     {card.icon}
@@ -82,16 +87,16 @@ export default function AchievementsSection() {
                     <span className="text-[#c0bfe0] text-center italic opacity-70 mt-6">Coming Soon</span>
                   )}
                 </button>
-                {/* MODAL for category */}
-                {openModal === idx && (
-                  <AchievementsModal
+                {/* Drawer Panel for this category */}
+                {openPanelIdx === idx && (
+                  <AchievementDrawerPanel
                     title={card.title}
                     items={card.items}
-                    open={openModal === idx}
-                    onClose={() => setOpenModal(null)}
+                    open={openPanelIdx === idx}
+                    onClose={() => setOpenPanelIdx(null)}
                   />
                 )}
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
