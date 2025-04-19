@@ -36,7 +36,7 @@ const projects = [
   {
     id: 5,
     title: "Security Workshop - JECRC University",
-    category: "Speaker",
+    category: "Education",
     description: "Conducted training sessions as a Workshop Speaker in Cyber Security at JECRC University, Jaipur in collaboration with CyberSecuredIndia, Aspire For Her, and Infosys.",
     technologies: ["Security Training", "Workshops", "Cybersecurity"],
   }
