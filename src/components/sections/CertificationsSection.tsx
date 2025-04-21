@@ -25,7 +25,7 @@ const certifications = [
   {
     id: 3,
     name: "Certified Network Security Practitioner (CNSP)",
-    organization: "Network Security Institute",
+    organization: "SecOps Group",
     date: "2022",
     logo: "cnsp",
     verifyLink: "https://candidate.speedexam.net/certificate.aspx?SSTATE=am4131EniU8ntjp4bO5mXTHb++lDiZvEBDD0QEpKsbUFhClttZdVAknN3CoXNvVkebndg2pYVHS6ev+q5Blht5sIxrULNGWX/SmqRAu1TLk=",
