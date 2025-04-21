@@ -4,13 +4,13 @@ import { Award, BadgeCheck } from "lucide-react";
 import AwardsModal from "./AwardsModal";
 
 const ctfAchievements = [
-  "1st Place (Winner), Territorial Army (TCQ CTF), 2024",
-  "Top National Finalist, IIT Patna CTF, 2023",
   "1st Place (Winner), IIT Bhubneshwar CTF, 2022",
   "2nd Place, IIT Madras CTF, 2023",
   "2nd Place, BITS Hyderabad CTF, 2023",
   "3rd Place, DSCI CTF, 2023",
   "3rd Place, IIT Roorkee CTF, 2023",
+  "Top National Finalist, TCQ CTF (Indian Army), 2024",
+  "Top National Finalist, IIT Patna CTF, 2023",
   "Top National Finalist, TrustLab CTF (IIT Bombay), 2022",
   "Top National Finalist, Embedded Security CTF (IIT Madras & DSCI), 2022"
 ];
@@ -140,7 +140,9 @@ export default function AchievementsSection() {
                   {card.icon}
                   <span className="uppercase tracking-[0.05em] text-[#e0dfff] font-bold text-lg md:text-xl text-center">{card.title}</span>
                   {idx === 2 && (
-                    <span className="text-[#c0bfe0] text-center italic opacity-60 mt-5">Coming Soon</span>
+                    <span className="text-[#c0bfe0] text-center italic opacity-60 mt-5"></span>
+                    //                    <span className="text-[#c0bfe0] text-center italic opacity-60 mt-5">Coming Soon</span>
+
                   )}
                 </div>
               </button>
