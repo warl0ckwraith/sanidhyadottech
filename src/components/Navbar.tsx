@@ -4,7 +4,6 @@ import {
   Menu, X, User, Briefcase, BookOpen, MessageSquare,
   Book
 } from 'lucide-react';
-import { ThemeToggle } from './ui/theme-toggle';
 import { motion } from 'framer-motion';
 
 interface NavItem {
@@ -101,9 +100,8 @@ export default function Navbar() {
             </motion.a>
           ))}
         </nav>
-        {/* Theme Toggle and Mobile Menu Button */}
+        {/* Mobile Menu Button */}
         <div className="flex items-center gap-4">
-          <ThemeToggle />
           <motion.button 
             className="md:hidden text-[#c0bfe0] hover:text-white"
             onClick={() => setIsOpen(!isOpen)}
