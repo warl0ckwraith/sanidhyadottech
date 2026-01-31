@@ -14,11 +14,11 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { name: 'About', href: '#about', icon: <User className="h-4 w-4" />, shortLabel: 'About' },
-  { name: 'Experience', href: '#experience', icon: <Briefcase className="h-4 w-4" />, shortLabel: 'Exp.' },
-  { name: 'Work', href: '#projects', icon: <BookOpen className="h-4 w-4" />, shortLabel: 'Work' },
-  { name: 'Blog', href: '#blog', icon: <Book className="h-4 w-4" />, shortLabel: 'Blog' },
-  { name: 'Contact', href: '#contact', icon: <MessageSquare className="h-4 w-4" />, shortLabel: 'Contact' },
+  { name: 'About', href: '#about', icon: <User className="h-4 w-4" />, shortLabel: '👤' },
+  { name: 'Experience', href: '#experience', icon: <Briefcase className="h-4 w-4" />, shortLabel: '🕒' },
+  { name: 'Work', href: '#projects', icon: <BookOpen className="h-4 w-4" />, shortLabel: '📁' },
+  { name: 'Contact', href: '#contact', icon: <MessageSquare className="h-4 w-4" />, shortLabel: '✉️' },
+  { name: 'Blog', href: '#blog', icon: <Book className="h-4 w-4" />, shortLabel: '📚' },
 ];
 
 export default function Navbar() {
@@ -60,19 +60,19 @@ export default function Navbar() {
       <div className="container mx-auto px-4 h-full flex items-center justify-between">
         {/* Logo */}
         <motion.a 
-          href="#home"
-          className="font-mono font-bold text-lg tracking-tight text-white relative group flex items-center gap-2"
+          href="#about"
+          className="font-mono font-bold text-lg tracking-tight text-white relative group"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          aria-label="Home"
+          aria-label="About"
         >
-          <span className="text-cyber-purple font-bold">{`>`}</span>
           <span className="relative z-10 group-hover:text-cyber-neon transition-colors duration-200">
-            root@sanidhya:~$
+            SS
           </span>
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyber-neon group-hover:w-full transition-all duration-300"></span>
         </motion.a>
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-6">
           {navItems.map((item) => (
             <motion.a
               key={item.name}
@@ -81,13 +81,14 @@ export default function Navbar() {
                 "text-sm font-medium relative group",
                 activeSection === item.href.substring(1) 
                   ? "text-cyber-neon" 
-                  : "text-gray-300 hover:text-white transition-colors duration-200"
+                  : "text-[#c0bfe0] hover:text-white transition-colors duration-200"
               )}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               aria-label={item.name}
             >
               <span className="flex items-center gap-1.5">
+                <span>{item.shortLabel}</span>
                 <span>{item.name}</span>
               </span>
               <span 

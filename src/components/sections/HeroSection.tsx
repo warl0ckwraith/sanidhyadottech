@@ -1,6 +1,6 @@
 
 import { useState, useEffect, memo } from "react";
-import { ArrowDownCircle, MessageSquare, Download, FileText } from "lucide-react";
+import { ArrowDownCircle, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Memoized matrix rain component for performance
@@ -65,19 +65,17 @@ export default function HeroSection() {
       
       {/* Content */}
       <div className="container mx-auto px-4 z-10">
-        <div className={`max-w-5xl transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
+        <div className={`max-w-4xl transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <p className="text-cyber-purple font-mono font-medium mb-4 tracking-wide">
-              SECURITY ENGINEER & CTF ARCHITECT
-            </p>
+            <p className="text-gray-300 text-sm font-mono mb-2">Hi, my name is</p>
           </motion.div>
 
           <motion.h1 
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-white tracking-tight"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -86,21 +84,21 @@ export default function HeroSection() {
           </motion.h1>
           
           <motion.h2 
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-300 mb-8 max-w-3xl leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-300 mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            I build defensive resilience through <span className="text-white">offensive operations</span> and <span className="text-white">adversary emulation</span>.
+            I am into Security & CTFs.
           </motion.h2>
           
           <motion.p 
-            className="text-lg text-gray-400 mb-10 max-w-2xl leading-relaxed"
+            className="text-lg sm:text-xl text-gray-400 mb-8 max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
           >
-            Specializing in Red Teaming, Digital Forensics, and scaling CTF infrastructure.
+            A learning security engineer who does pentesting, CTF challenges, and research on adversary emulation.
           </motion.p>
           
           <motion.div
@@ -111,21 +109,11 @@ export default function HeroSection() {
           >
             <button 
               onClick={scrollToContact}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-cyber-purple text-white font-medium rounded hover:bg-cyber-purple/80 transition-all duration-300 shadow-[0_0_10px_rgba(90,45,130,0.5)] hover:shadow-[0_0_15px_rgba(90,45,130,0.8)] hover:-translate-y-1"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-cyber-purple text-white font-medium rounded hover:bg-cyber-purple/80 transition-all duration-300 shadow-[0_0_10px_rgba(90,45,130,0.5)] hover:shadow-[0_0_15px_rgba(90,45,130,0.8)] hover:-translate-y-1"
             >
               <MessageSquare className="h-5 w-5" />
               Get in Touch
             </button>
-            
-            <a 
-              href="/resume.pdf" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-cyber-purple text-white font-medium rounded hover:bg-cyber-purple/10 transition-all duration-300 shadow-[0_0_10px_rgba(90,45,130,0.2)] hover:shadow-[0_0_15px_rgba(90,45,130,0.4)] hover:-translate-y-1"
-            >
-              <FileText className="h-5 w-5" />
-              View Resume
-            </a>
           </motion.div>
         </div>
       </div>
@@ -137,7 +125,7 @@ export default function HeroSection() {
         transition={{ repeat: Infinity, duration: 1.5 }}
       >
         <a href="#about" aria-label="Scroll down">
-          <ArrowDownCircle className="h-10 w-10 text-gray-600 hover:text-cyber-purple transition-colors duration-300" />
+          <ArrowDownCircle className="h-10 w-10 text-cyber-purple opacity-75 hover:text-cyber-neon hover:opacity-100 transition-colors duration-300" />
         </a>
       </motion.div>
     </section>
