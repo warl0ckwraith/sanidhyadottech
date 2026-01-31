@@ -16,7 +16,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { name: 'About', href: '#about', icon: <User className="h-4 w-4" />, shortLabel: '👤' },
   { name: 'Experience', href: '#experience', icon: <Briefcase className="h-4 w-4" />, shortLabel: '🕒' },
-  { name: 'Work', href: '#projects', icon: <BookOpen className="h-4 w-4" />, shortLabel: '📁' },
+  { name: 'Community', href: '#projects', icon: <BookOpen className="h-4 w-4" />, shortLabel: '📁' },
   { name: 'Contact', href: '#contact', icon: <MessageSquare className="h-4 w-4" />, shortLabel: '✉️' },
   { name: 'Blog', href: 'https://blog.sanidhya.tech', icon: <Book className="h-4 w-4" />, shortLabel: '📚' },
 ];

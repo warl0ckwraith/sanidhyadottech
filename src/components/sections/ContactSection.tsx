@@ -123,20 +123,6 @@ export default function ContactSection() {
                 </div>
                 
                 <div>
-                  <label htmlFor="subject" className="text-sm text-gray-300 mb-2 block">
-                    Subject
-                  </label>
-                  <input
-                    id="subject"
-                    name="subject"
-                    type="text"
-                    className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors disabled:opacity-50"
-                    required
-                    disabled={state.submitting}
-                  />
-                </div>
-                
-                <div>
                   <label htmlFor="message" className="text-sm text-gray-300 mb-2 block">
                     Message
                   </label>

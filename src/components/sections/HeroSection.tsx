@@ -98,7 +98,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
           >
-            Security engineer & CTF developer who Specializes in Red Teaming, CTF development and exploring adversarial emulation
+            Security engineer who specializes in Red Teaming, CTF development and currently exploring adversarial emulation
           </motion.p>
           
           <motion.div
