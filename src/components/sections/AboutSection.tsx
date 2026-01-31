@@ -20,19 +20,15 @@ export default function AboutSection() {
             viewport={{ once: true, margin: "-100px" }}
           >
             <p className="text-gray-300 text-lg leading-relaxed mb-6 font-bold">
-              Hey! I'm Sanidhya Soni — I break things (ethically), build challenges, and love all things offensive security.
+              I got into security by messing around with tools I barely understood until something clicked. Now I do red team work, security research, and sometimes design CTF challenges.
             </p>
 
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              My journey into cybersecurity started during college when I opened Wireshark for the first time — and instantly got hooked. Since then, I've been deep into red teaming, exploit development, and creating CTFs that (hopefully) confuse and challenge others the way I was when I started out.
+              I've led penetration testing and social engineering ops for clients globally, worked as a security engineer with the Indian Army, and currently run the OWASP chapter at VIT Bhopal. Picked up OSCP and OSWP along the way, found some bugs through bounty programs, built some exploitation & automation tools.
             </p>
             
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              I've worked with military cyber units, collaborated on red team projects, and built tons of CTF challenges for conferences and companies. I love understanding how attackers think and using that mindset to design better defenses — or better traps.
-            </p>
-            
-            <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              Right now, I spend most of my time building security labs, testing systems, and occasionally jumping into CTFs just to keep myself sharp (and have a little fun).
+              Right now I'm splitting time between consulting, finishing my degree, and staying sharp through CTFs and security research.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 items-start mt-8">
