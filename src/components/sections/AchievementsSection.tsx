@@ -139,6 +139,9 @@ export default function AchievementsSection() {
                 <div className="flex flex-col items-center gap-5 py-10 px-4 select-none w-full">
                   {card.icon}
                   <span className="uppercase tracking-[0.05em] text-[#e0dfff] font-bold text-lg md:text-xl text-center">{card.title}</span>
+                  {idx !== 2 && card.items.length > 0 && (
+                    <span className="text-xs text-gray-400 mt-2">Click to expand</span>
+                  )}
                   {idx === 2 && (
                     <span className="text-[#c0bfe0] text-center italic opacity-60 mt-5"></span>
                     //                    <span className="text-[#c0bfe0] text-center italic opacity-60 mt-5">Coming Soon</span>
