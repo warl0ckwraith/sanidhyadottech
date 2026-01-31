@@ -38,8 +38,7 @@ const certifications: Certification[] = [
     name: "Fortinet Network Security Expert Level 2",
     organization: "Fortinet",
     date: "2022",
-    logoType: 'background',
-    backgroundImage: "https://nseti-pdfs.s3.us-west-2.amazonaws.com/img/cert_banner_fca_cybersecurity.jpg",
+    logoType: 'none',
     verifyLink: "https://www.fortinet.com/training/certification/verification",
   },
   {
