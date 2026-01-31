@@ -1,6 +1,10 @@
 
 import { useState } from "react";
-import { Mail, Github, Linkedin, Globe } from "lucide-react";
+import { Mail, Linkedin, MapPin, Send, Loader2, CheckCircle } from "lucide-react";
+
+// Formspree endpoint - Replace with your actual Formspree form endpoint
+// Get yours at: https://formspree.io/register
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnjvedoq";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -9,25 +13,59 @@ export default function ContactSection() {
     subject: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    if (submitStatus !== "idle") {
+      setSubmitStatus("idle");
+      setErrorMessage("");
+    }
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission (would connect to backend in a real implementation)
-    console.log("Form submitted:", formData);
-    alert("Message sent! (This is a demo)");
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        // Reset form after successful submission
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: ""
+        });
+      } else {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to send message");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   return (
@@ -79,13 +117,9 @@ export default function ContactSection() {
                   </div>
                 </div>
                 
-                
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-cyber-purple/20 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyber-purple">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                      <circle cx="12" cy="10" r="3" />
-                    </svg>
+                    <MapPin className="h-5 w-5 text-cyber-purple" />
                   </div>
                   <div>
                     <h4 className="text-white font-medium">Location</h4>
@@ -101,6 +135,20 @@ export default function ContactSection() {
             <div className="lg:col-span-3 bg-gray-900/50 rounded-lg p-6 border border-gray-800">
               <h3 className="text-xl font-bold text-white mb-6">Send a Message</h3>
               
+              {/* Status Messages */}
+              {submitStatus === "success" && (
+                <div className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-green-400" />
+                  <span className="text-green-400">Message sent successfully! I'll get back to you soon.</span>
+                </div>
+              )}
+              
+              {submitStatus === "error" && (
+                <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
+                  <span className="text-red-400">{errorMessage || "Failed to send message. Please try again."}</span>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
@@ -113,8 +161,9 @@ export default function ContactSection() {
                       type="text"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors"
+                      className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors disabled:opacity-50"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
                   
@@ -128,8 +177,9 @@ export default function ContactSection() {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors"
+                      className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors disabled:opacity-50"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -144,8 +194,9 @@ export default function ContactSection() {
                     type="text"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors"
+                    className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors disabled:opacity-50"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 
@@ -159,16 +210,28 @@ export default function ContactSection() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors"
+                    className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors disabled:opacity-50 resize-none"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 
                 <button
                   type="submit"
-                  className="px-8 py-3 bg-cyber-purple text-white font-medium rounded hover:bg-opacity-90 transition-all duration-300 shadow-[0_0_10px_rgba(90,45,130,0.5)] hover:shadow-[0_0_15px_rgba(90,45,130,0.8)]"
+                  disabled={isSubmitting}
+                  className="px-8 py-3 bg-cyber-purple text-white font-medium rounded hover:bg-opacity-90 transition-all duration-300 shadow-[0_0_10px_rgba(90,45,130,0.5)] hover:shadow-[0_0_15px_rgba(90,45,130,0.8)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="h-5 w-5 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-5 w-5" />
+                      Send Message
+                    </>
+                  )}
                 </button>
               </form>
             </div>

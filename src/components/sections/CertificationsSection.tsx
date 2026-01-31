@@ -5,7 +5,16 @@ import { cn } from "@/lib/utils";
 import { Badge } from "../ui/badge";
 import { motion } from "framer-motion";
 
-const certifications = [
+interface Certification {
+  id: number;
+  name: string;
+  organization: string;
+  date: string;
+  logo: string;
+  verifyLink: string;
+}
+
+const certifications: Certification[] = [
   {
     id: 1,
     name: "OffSec Certified Professional (OSCP)",
@@ -40,8 +49,14 @@ const certifications = [
   }
 ];
 
-const CertificateModal = ({ cert, isOpen, onClose }) => {
-  if (!isOpen) return null;
+interface CertificateModalProps {
+  cert: Certification | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const CertificateModal = ({ cert, isOpen, onClose }: CertificateModalProps) => {
+  if (!isOpen || !cert) return null;
 
   return (
     <motion.div 
@@ -91,7 +106,12 @@ const CertificateModal = ({ cert, isOpen, onClose }) => {
   );
 };
 
-const CertificateCard = ({ cert, onClick }) => {
+interface CertificateCardProps {
+  cert: Certification;
+  onClick: () => void;
+}
+
+const CertificateCard = ({ cert, onClick }: CertificateCardProps) => {
   return (
     <motion.div 
       className="group bg-gray-900/50 rounded-lg p-6 border border-gray-800 hover:border-cyber-purple transition-all duration-300 cursor-pointer"
@@ -117,7 +137,7 @@ const CertificateCard = ({ cert, onClick }) => {
 };
 
 export default function CertificationsSection() {
-  const [selectedCert, setSelectedCert] = useState(null);
+  const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
   return (
     <section id="certifications" className="py-24 bg-black relative">

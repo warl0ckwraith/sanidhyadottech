@@ -69,6 +69,8 @@ export default function ProjectsSection() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
+                aria-label={`Filter projects by ${category}`}
+                aria-pressed={activeCategory === category}
                 className={cn(
                   "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
                   activeCategory === category 

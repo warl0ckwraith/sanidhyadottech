@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { 
   Menu, X, User, Briefcase, BookOpen, MessageSquare,
@@ -7,13 +7,18 @@ import {
 import { ThemeToggle } from './ui/theme-toggle';
 import { motion } from 'framer-motion';
 
-const navItems = [
+interface NavItem {
+  name: string;
+  href: string;
+  icon: React.ReactNode;
+  shortLabel: string;
+}
+
+const navItems: NavItem[] = [
   { name: 'About', href: '#about', icon: <User className="h-4 w-4" />, shortLabel: '👤' },
   { name: 'Experience', href: '#experience', icon: <Briefcase className="h-4 w-4" />, shortLabel: '🕒' },
   { name: 'Work', href: '#projects', icon: <BookOpen className="h-4 w-4" />, shortLabel: '📁' },
   { name: 'Contact', href: '#contact', icon: <MessageSquare className="h-4 w-4" />, shortLabel: '✉️' },
-  { name: 'Blog', href: '#blog', icon: <BookOpen className="h-4 w-4" />, shortLabel: '📚' },
-
 ];
 
 export default function Navbar() {
