@@ -37,11 +37,6 @@ export default function AboutSection() {
             
             <div className="flex flex-col sm:flex-row gap-6 items-start justify-between mt-8">
               <div>
-                <h4 className="text-cyber-purple font-medium mb-2">Location</h4>
-                <p className="text-white">Jaipur, India</p>
-              </div>
-              
-              <div>
                 <h4 className="text-cyber-purple font-medium mb-2">Email</h4>
                 <p className="text-white">sanidhyasonii@proton.me</p>
               </div>

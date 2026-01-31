@@ -1,6 +1,6 @@
 
 import { useState, useEffect, memo } from "react";
-import { ArrowDownCircle, MessageSquare } from "lucide-react";
+import { ArrowDownCircle, MessageSquare, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Memoized matrix rain component for performance
@@ -98,7 +98,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
           >
-            A learning security engineer who does pentesting, CTF challenges, and research on adversary emulation.
+            Security engineer & CTF developer who Specialized in Red Teaming, CTF development and exploring adversarial emulation
           </motion.p>
           
           <motion.div
@@ -114,6 +114,15 @@ export default function HeroSection() {
               <MessageSquare className="h-5 w-5" />
               Get in Touch
             </button>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-cyber-purple text-cyber-neon font-medium rounded hover:bg-cyber-purple/10 transition-all duration-300 hover:-translate-y-1"
+            >
+              <FileText className="h-5 w-5" />
+              Resume
+            </a>
           </motion.div>
         </div>
       </div>

@@ -109,8 +109,6 @@ const TimelineNode = ({ experience, index, isLast }: {
   index: number, 
   isLast: boolean 
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  
   return (
     <motion.div 
       className="relative"
@@ -135,13 +133,7 @@ const TimelineNode = ({ experience, index, isLast }: {
         
         {/* Content */}
         <div 
-          className={cn(
-            "flex-1 bg-gray-900/50 rounded-lg p-6 border transition-all duration-300",
-            isExpanded 
-              ? "border-cyber-purple shadow-[0_0_15px_rgba(90,45,130,0.3)]" 
-              : "border-gray-800 hover:border-gray-700"
-          )}
-          onClick={() => setIsExpanded(!isExpanded)}
+          className="flex-1 bg-gray-900/50 rounded-lg p-6 border border-gray-800 hover:border-cyber-purple transition-all duration-300 hover:shadow-[0_0_15px_rgba(90,45,130,0.3)]"
         >
           <div className="mb-3">
             <h4 className="text-lg font-bold text-white flex flex-wrap items-center gap-2">
@@ -158,13 +150,8 @@ const TimelineNode = ({ experience, index, isLast }: {
             </div>
           </div>
           
-          {/* Expandable achievements */}
-          <div 
-            className={cn(
-              "mt-4 transition-all duration-300 overflow-hidden",
-              isExpanded ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-            )}
-          >
+          {/* Always visible achievements */}
+          <div className="mt-4">
             <ul className="space-y-3 pt-2 border-t border-gray-700">
               {experience.achievements.map((achievement, i) => (
                 <li key={i} className="flex items-start">
@@ -173,13 +160,6 @@ const TimelineNode = ({ experience, index, isLast }: {
                 </li>
               ))}
             </ul>
-          </div>
-          
-          {/* Click to expand indicator */}
-          <div className="mt-3 text-center">
-            <span className="text-xs text-gray-400">
-              {isExpanded ? "Click to collapse" : "Click to expand"}
-            </span>
           </div>
         </div>
       </div>
