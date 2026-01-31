@@ -1,66 +1,8 @@
-
-import { useState } from "react";
-import { Mail, Linkedin, MapPin, Send, Loader2, CheckCircle } from "lucide-react";
-
-// Formspree endpoint - Replace with your actual Formspree form endpoint
-// Get yours at: https://formspree.io/register
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnjvedoq";
+import { Mail, Linkedin, MapPin, Send, Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { useForm } from "@formspree/react";
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (submitStatus !== "idle") {
-      setSubmitStatus("idle");
-      setErrorMessage("");
-    }
-  };
-  
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
-    setErrorMessage("");
-
-    try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: {
-          "Accept": "application/json"
-        },
-        body: new FormData(e.currentTarget as HTMLFormElement)
-      });
-
-      if (response.ok) {
-        setSubmitStatus("success");
-        // Reset form after successful submission
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          message: ""
-        });
-      } else {
-        const data = await response.json();
-        throw new Error(data.error || "Failed to send message");
-      }
-    } catch (error) {
-      setSubmitStatus("error");
-      setErrorMessage("Failed to send message. Please try again or email directly at sanidhyasonii@proton.me");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const [state, handleSubmit] = useForm("xnjvedoq");
   
   return (
     <section id="contact" className="py-24 bg-black relative">
@@ -129,17 +71,23 @@ export default function ContactSection() {
             <div className="lg:col-span-3 bg-gray-900/50 rounded-lg p-6 border border-gray-800">
               <h3 className="text-xl font-bold text-white mb-6">Send a Message</h3>
               
-              {/* Status Messages */}
-              {submitStatus === "success" && (
+              {/* Success Message */}
+              {state.succeeded && (
                 <div className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
+                  <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
                   <span className="text-green-400">Message sent successfully! I'll get back to you soon.</span>
                 </div>
               )}
               
-              {submitStatus === "error" && (
-                <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
-                  <span className="text-red-400">{errorMessage || "Failed to send message. Please try again."}</span>
+              {/* Error Message */}
+              {state.errors && state.errors.length > 0 && (
+                <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg flex items-start gap-3">
+                  <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
+                  <div className="text-red-400">
+                    {state.errors.map((error, i) => (
+                      <p key={i}>{error.message}</p>
+                    ))}
+                  </div>
                 </div>
               )}
 
@@ -153,11 +101,9 @@ export default function ContactSection() {
                       id="name"
                       name="name"
                       type="text"
-                      value={formData.name}
-                      onChange={handleChange}
                       className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors disabled:opacity-50"
                       required
-                      disabled={isSubmitting}
+                      disabled={state.submitting}
                     />
                   </div>
                   
@@ -169,11 +115,9 @@ export default function ContactSection() {
                       id="email"
                       name="email"
                       type="email"
-                      value={formData.email}
-                      onChange={handleChange}
                       className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors disabled:opacity-50"
                       required
-                      disabled={isSubmitting}
+                      disabled={state.submitting}
                     />
                   </div>
                 </div>
@@ -186,11 +130,9 @@ export default function ContactSection() {
                     id="subject"
                     name="subject"
                     type="text"
-                    value={formData.subject}
-                    onChange={handleChange}
                     className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors disabled:opacity-50"
                     required
-                    disabled={isSubmitting}
+                    disabled={state.submitting}
                   />
                 </div>
                 
@@ -201,25 +143,19 @@ export default function ContactSection() {
                   <textarea
                     id="message"
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
                     rows={5}
                     className="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyber-purple transition-colors disabled:opacity-50 resize-none"
                     required
-                    disabled={isSubmitting}
+                    disabled={state.submitting}
                   />
                 </div>
                 
-                {/* Formspree hidden fields - must be static, not React bindings */}
-                <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
-                <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission" />
-                
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={state.submitting}
                   className="px-8 py-3 bg-cyber-purple text-white font-medium rounded hover:bg-opacity-90 transition-all duration-300 shadow-[0_0_10px_rgba(90,45,130,0.5)] hover:shadow-[0_0_15px_rgba(90,45,130,0.8)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
-                  {isSubmitting ? (
+                  {state.submitting ? (
                     <>
                       <Loader2 className="h-5 w-5 animate-spin" />
                       Sending...
