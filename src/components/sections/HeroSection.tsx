@@ -9,7 +9,7 @@ const MatrixRain = memo(function MatrixRain() {
   const columns = Array.from({ length: 12 }, (_, i) => ({
     id: i,
     left: `${(i / 12) * 100 + Math.random() * 5}%`,
-    delay: Math.random() * 5,
+    delay: Math.random() * 3,
     duration: 8 + Math.random() * 7,
     chars: Array.from({ length: 15 }, () => 
       String.fromCharCode(33 + Math.floor(Math.random() * 94))
