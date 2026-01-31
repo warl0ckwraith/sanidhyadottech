@@ -30,7 +30,8 @@ const experiences = [
       "Created educational framework for red teaming processes used by defense personnel",
       "Provided research support for military cyber security operations",
       "Developed practical exploitation scenarios for training exercises"
-    ]
+    ],
+    highlight: true
   },
   {
     id: 2,
@@ -74,32 +75,24 @@ const experiences = [
 ];
 
 const education = {
-  degree: "B.Tech in Computer Science Engineering (Cyber Security & Digital Forensics)",
-  university: "VIT Bhopal University, India",
+  degree: "B.Tech in Computer Science (Cyber Security & Forensics)",
+  university: "VIT Bhopal University",
   duration: "2022 - Present",
   highlights: [
     {
       title: "Core Subjects",
       courses: [
-        "Computer Networks",
-        "Database Systems",
+        "Digital Forensics",
+        "Network Security",
         "Operating Systems",
-        "Digital Forensics"
+        "Cryptography"
       ],
       icon: <Network className="h-5 w-5" />
-    },
-    {
-      title: "Advanced Courses",
-      courses: [
-        "Ethical Hacking",
-        "Software Vulnerability Testing",
-        "Data Privacy",
-        "Security Frameworks"
-      ]
     }
   ],
   achievements: [
     "President of OWASP VIT Bhopal Chapter",
+    "Led multiple technical workshops and CTF events"
   ]
 };
 
@@ -109,77 +102,72 @@ const TimelineNode = ({ experience, index, isLast }: {
   index: number, 
   isLast: boolean 
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  // Always expanded for better skimmability
+  const isExpanded = true;
   
   return (
     <motion.div 
       className="relative"
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true, margin: "-100px" }}
     >
       {/* Timeline line */}
       {!isLast && (
-        <div className="absolute left-8 top-8 w-0.5 h-full bg-gradient-to-b from-cyber-purple/70 to-cyber-purple/10 z-0"></div>
+        <div className="absolute left-8 top-8 w-0.5 h-full bg-gradient-to-b from-cyber-purple/50 to-gray-800 z-0"></div>
       )}
       
       {/* Timeline node */}
       <div className="flex items-start gap-6 relative z-10">
         {/* Date badge */}
-        <div className="flex-shrink-0 w-16 h-16 rounded-full bg-cyber-purple/20 flex items-center justify-center flex-shrink-0 border border-cyber-purple/30">
-          <Badge variant="purple-light" className="text-xs px-2 py-1 whitespace-nowrap">
-            {experience.period.split(' - ')[0]}
-          </Badge>
+        <div className={cn(
+          "flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center border-2 z-10 bg-black",
+          experience.highlight ? "border-cyber-purple shadow-[0_0_15px_rgba(90,45,130,0.4)]" : "border-gray-700"
+        )}>
+          <span className={cn(
+            "text-xs font-bold whitespace-nowrap",
+            experience.highlight ? "text-cyber-neon" : "text-gray-400"
+          )}>
+            {experience.period.split(' ')[0]} {/* Show just the year/month start */}
+          </span>
         </div>
         
         {/* Content */}
         <div 
           className={cn(
-            "flex-1 bg-gray-900/50 rounded-lg p-6 border transition-all duration-300",
-            isExpanded 
-              ? "border-cyber-purple shadow-[0_0_15px_rgba(90,45,130,0.3)]" 
+            "flex-1 bg-gray-900/40 rounded-lg p-6 border transition-all duration-300",
+            experience.highlight 
+              ? "border-cyber-purple/50 bg-cyber-purple/5" 
               : "border-gray-800 hover:border-gray-700"
           )}
-          onClick={() => setIsExpanded(!isExpanded)}
         >
-          <div className="mb-3">
-            <h4 className="text-lg font-bold text-white flex flex-wrap items-center gap-2">
-              {experience.title} 
-              <span className="text-cyber-purple">@</span> 
-              <span className="font-normal text-cyber-neon">{experience.company}</span>
-            </h4>
-            
-            <div className="flex flex-wrap justify-between items-center mt-2">
-              <span className="text-gray-400 text-sm">{experience.location}</span>
-              <Badge variant="purple-light" className="text-xs font-medium">
+          <div className="mb-4">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+              <h4 className="text-xl font-bold text-white flex flex-wrap items-center gap-2">
+                {experience.title} 
+                <span className="text-cyber-purple">@</span> 
+                <span className="font-normal text-cyber-neon">{experience.company}</span>
+              </h4>
+              <Badge variant="purple-light" className="w-fit text-xs font-medium">
                 {experience.period}
               </Badge>
             </div>
+            
+            <p className="text-gray-400 text-sm mb-4">{experience.description}</p>
           </div>
           
-          {/* Expandable achievements */}
-          <div 
-            className={cn(
-              "mt-4 transition-all duration-300 overflow-hidden",
-              isExpanded ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-            )}
-          >
-            <ul className="space-y-3 pt-2 border-t border-gray-700">
+          {/* Achievements - Always Visible */}
+          <div className="mt-2">
+            <h5 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Key Impact</h5>
+            <ul className="space-y-2">
               {experience.achievements.map((achievement, i) => (
                 <li key={i} className="flex items-start">
-                  <span className="text-cyber-purple mr-2 font-mono">→</span>
-                  <span className="text-gray-300">{achievement}</span>
+                  <span className="text-cyber-purple mr-2 mt-1">▹</span>
+                  <span className="text-gray-300 text-sm">{achievement}</span>
                 </li>
               ))}
             </ul>
-          </div>
-          
-          {/* Click to expand indicator */}
-          <div className="mt-3 text-center">
-            <span className="text-xs text-gray-400">
-              {isExpanded ? "Click to collapse" : "Click to expand"}
-            </span>
           </div>
         </div>
       </div>
@@ -188,99 +176,49 @@ const TimelineNode = ({ experience, index, isLast }: {
 };
 
 const EducationCard = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   return (
     <motion.div 
-      className="max-w-3xl mx-auto"
-      initial={{ opacity: 0, y: 50 }}
+      className="max-w-4xl mx-auto"
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true, margin: "-100px" }}
     >
-      <div 
-        className={cn(
-          "bg-gray-900/50 rounded-lg p-6 border border-gray-800 transition-all duration-300",
-          "hover:border-cyber-purple hover:shadow-[0_0_15px_rgba(90,45,130,0.3)]",
-          "cursor-pointer"
-        )}
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        {/* Front Content */}
-        <div className="flex items-start gap-4">
-          <div className="w-16 h-16 rounded-full bg-cyber-purple/20 flex items-center justify-center flex-shrink-0">
-            <GraduationCap className="h-8 w-8 text-cyber-purple" />
-          </div>
+      <div className="bg-gray-900/30 rounded-lg p-6 border border-gray-800 flex flex-col md:flex-row items-center md:items-start gap-6">
+        <div className="w-16 h-16 rounded-full bg-cyber-purple/10 flex items-center justify-center flex-shrink-0 border border-cyber-purple/20">
+          <GraduationCap className="h-8 w-8 text-cyber-purple" />
+        </div>
+        
+        <div className="flex-1 w-full text-center md:text-left">
+          <h4 className="text-xl font-bold text-white mb-1">
+            {education.degree}
+          </h4>
+          <p className="text-cyber-neon font-medium text-sm mb-4">
+            {education.university} • {education.duration}
+          </p>
           
-          <div className="flex-1">
-            <h4 className="text-lg font-bold text-white mb-2">
-              {education.degree}
-            </h4>
-            <p className="text-cyber-neon font-mono text-sm mb-3">
-              {education.university}
-            </p>
-            <Badge variant="purple-light" className="text-xs font-medium">
-              {education.duration}
-            </Badge>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-left">
+             <div className="bg-black/40 rounded p-3 border border-gray-800">
+               <h5 className="text-gray-400 text-xs uppercase tracking-wider mb-2 font-bold">Focus Areas</h5>
+               <div className="flex flex-wrap gap-2">
+                 {education.highlights[0].courses.map((c, i) => (
+                   <span key={i} className="text-xs px-2 py-1 bg-cyber-purple/10 text-cyber-purple rounded">{c}</span>
+                 ))}
+               </div>
+             </div>
+             
+             <div className="bg-black/40 rounded p-3 border border-gray-800">
+               <h5 className="text-gray-400 text-xs uppercase tracking-wider mb-2 font-bold">Leadership</h5>
+                <ul className="space-y-1">
+                 {education.achievements.map((a, i) => (
+                   <li key={i} className="text-sm text-gray-300 flex items-center gap-2">
+                     <span className="w-1 h-1 bg-cyber-neon rounded-full"></span>
+                     {a}
+                   </li>
+                 ))}
+               </ul>
+             </div>
           </div>
-        </div>
-
-        {/* Expandable Content */}
-        <div 
-          className={cn(
-            "mt-6 overflow-hidden transition-all duration-300",
-            isExpanded ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
-          )}
-        >
-          <div className="space-y-6">
-            {/* Course Highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {education.highlights.map((highlight, index) => (
-                <div 
-                  key={index}
-                  className="bg-gray-800/50 rounded-lg p-4 hover:bg-gray-700/50 transition-colors"
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    {highlight.icon || <BookOpen className="h-5 w-5 text-cyber-purple" />}
-                    <h5 className="text-cyber-purple font-medium">
-                      {highlight.title}
-                    </h5>
-                  </div>
-                  <ul className="space-y-2">
-                    {highlight.courses.map((course, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <span className="text-cyber-purple text-xs">→</span>
-                        <span className="text-gray-300 text-sm">{course}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            {/* Achievements */}
-            <div className="bg-gray-800/50 rounded-lg p-4">
-              <div className="flex items-center gap-2 mb-3">
-                <Award className="h-5 w-5 text-cyber-purple" />
-                <h5 className="text-cyber-purple font-medium">Academic Achievements</h5>
-              </div>
-              <ul className="space-y-2">
-                {education.achievements.map((achievement, i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <span className="text-cyber-purple text-xs">→</span>
-                    <span className="text-gray-300 text-sm">{achievement}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Expand/Collapse Indicator */}
-        <div className="mt-4 text-center">
-          <span className="text-xs text-gray-400">
-            {isExpanded ? "Click to collapse" : "Click to expand"}
-          </span>
         </div>
       </div>
     </motion.div>
@@ -301,7 +239,7 @@ export default function ExperienceSection() {
           </h2>
           
           {/* Vertical Timeline */}
-          <div className="max-w-4xl mx-auto space-y-12 pl-0 sm:pl-6">
+          <div className="max-w-4xl mx-auto space-y-8 pl-0 sm:pl-6 mb-24">
             {experiences.map((exp, index) => (
               <TimelineNode 
                 key={exp.id} 
@@ -313,10 +251,9 @@ export default function ExperienceSection() {
           </div>
           
           {/* Education */}
-          <div className="mt-24">
+          <div>
             <h3 className="text-2xl font-bold text-white mb-8 text-center">
-              <span className="text-white">Academic</span>
-              <span className="text-cyber-purple"> Education</span>
+              <span className="text-white">Education</span>
             </h3>
             <EducationCard />
           </div>

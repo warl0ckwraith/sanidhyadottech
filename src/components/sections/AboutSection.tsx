@@ -19,30 +19,30 @@ export default function AboutSection() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <p className="text-gray-300 text-lg leading-relaxed mb-6 font-bold">
-              Hey! I'm Sanidhya Soni — I break things (ethically), build challenges, and love all things offensive security.
+            <p className="text-gray-200 text-lg leading-relaxed mb-6 font-bold">
+              I am a Security Engineer specializing in offensive operations and infrastructure development.
             </p>
 
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              My journey into cybersecurity started during college when I opened Wireshark for the first time — and instantly got hooked. Since then, I've been deep into red teaming, exploit development, and creating CTFs that (hopefully) confuse and challenge others the way I was when I started out.
+              My core focus is on <strong>adversary emulation</strong> and <strong>CTF architecture</strong>. I don't just find vulnerabilities; I build the environments that train defense teams to detect them. 
             </p>
             
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              I've worked with military cyber units, collaborated on red team projects, and built tons of CTF challenges for conferences and companies. I love understanding how attackers think and using that mindset to design better defenses — or better traps.
+              My experience includes working with the <strong>Indian Army</strong> and <strong>NCIIPC</strong> (Govt. of India) to design realistic Red Teaming scenarios and digital forensics challenges. I bridge the gap between theoretical security concepts and operational reality.
             </p>
             
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              Right now, I spend most of my time building security labs, testing systems, and occasionally jumping into CTFs just to keep myself sharp (and have a little fun).
+              When I'm not auditing systems, I am developing next-generation CTF challenges for conferences like <strong>Vulncon</strong> and <strong>BSides</strong>, helping the community sharpen their tradecraft.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 items-start justify-between mt-8">
+            <div className="flex flex-col sm:flex-row gap-6 items-start justify-between mt-8 border-t border-gray-800 pt-8">
               <div>
-                <h4 className="text-cyber-purple font-medium mb-2">Location</h4>
+                <h4 className="text-cyber-purple font-medium mb-1 uppercase text-xs tracking-wider">Location</h4>
                 <p className="text-white">Jaipur, India</p>
               </div>
               
               <div>
-                <h4 className="text-cyber-purple font-medium mb-2">Email</h4>
+                <h4 className="text-cyber-purple font-medium mb-1 uppercase text-xs tracking-wider">Contact</h4>
                 <p className="text-white">sanidhyasonii@proton.me</p>
               </div>
               
@@ -51,9 +51,9 @@ export default function AboutSection() {
                   href="https://linkedin.com/in/sanidhyasonii" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="px-4 py-2 border border-cyber-purple text-cyber-neon bg-cyber-purple/10 hover:bg-cyber-purple/30 rounded-lg transition-all"
+                  className="inline-flex items-center px-5 py-2 border border-cyber-purple text-cyber-neon bg-cyber-purple/10 hover:bg-cyber-purple/20 rounded-lg transition-all font-medium"
                 >
-                  LinkedIn
+                  LinkedIn Profile
                 </a>
               </div>
             </div>

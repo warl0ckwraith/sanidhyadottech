@@ -1,21 +1,49 @@
-import { Github, Linkedin, Globe, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="container mx-auto px-3 pb-8">
-
-        
-        <div className="border-t border-gray-800 mt-8 pt-4 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm mt-2">
-            © {new Date().getFullYear()} Sanidhya Soni. All rights reserved.
-          </p>
+    <footer className="bg-black py-8 border-t border-gray-900">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           
-          <nav className="flex space-x-4 mt-2 md:mt-0">
-            <a href="#home" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">Home</a>
-            <a href="#about" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">About</a>
-            <a href="#projects" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">Projects</a>
-            <a href="#contact" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">Contact</a>
+          <div className="text-center md:text-left">
+            <p className="text-gray-500 text-sm">
+              © {new Date().getFullYear()} Sanidhya Soni. Engineered for resilience.
+            </p>
+          </div>
+          
+          <div className="flex items-center gap-6">
+            <a 
+              href="https://github.com/sanidhyasonii" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+              aria-label="GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+            <a 
+              href="https://linkedin.com/in/sanidhyasonii" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a 
+              href="mailto:sanidhyasonii@proton.me" 
+              className="text-gray-400 hover:text-white transition-colors"
+              aria-label="Email"
+            >
+              <Mail className="h-5 w-5" />
+            </a>
+          </div>
+
+          <nav className="flex space-x-6">
+            <a href="#home" className="text-gray-500 hover:text-cyber-purple text-sm transition-colors">Home</a>
+            <a href="#about" className="text-gray-500 hover:text-cyber-purple text-sm transition-colors">About</a>
+            <a href="#projects" className="text-gray-500 hover:text-cyber-purple text-sm transition-colors">Work</a>
           </nav>
         </div>
       </div>
