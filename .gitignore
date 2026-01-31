@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Hugo Blog
+blog/public/
+blog/resources/
+blog/.hugo_build.lock

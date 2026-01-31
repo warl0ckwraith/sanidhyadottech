@@ -18,7 +18,7 @@ const navItems: NavItem[] = [
   { name: 'Experience', href: '#experience', icon: <Briefcase className="h-4 w-4" />, shortLabel: '🕒' },
   { name: 'Work', href: '#projects', icon: <BookOpen className="h-4 w-4" />, shortLabel: '📁' },
   { name: 'Contact', href: '#contact', icon: <MessageSquare className="h-4 w-4" />, shortLabel: '✉️' },
-  { name: 'Blog', href: '#blog', icon: <Book className="h-4 w-4" />, shortLabel: '📚' },
+  { name: 'Blog', href: 'https://blog.sanidhya.tech', icon: <Book className="h-4 w-4" />, shortLabel: '📚' },
 ];
 
 export default function Navbar() {
