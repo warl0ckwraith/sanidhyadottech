@@ -23,10 +23,10 @@ const certifications: Certification[] = [
   },
   {
     id: 2,
-    name: "OffSec Wireless Professional (OWSP)",
+    name: "OffSec Wireless Professional (OSWP)",
     organization: "OffSec",
     date: "2023",
-    logo: "owsp",
+    logo: "oswp",
     verifyLink: "https://www.credential.net/e1677b26-b944-4aae-99c0-ac34bb1ebb8f",
   },
   {
@@ -58,8 +58,12 @@ const CertificateCard = ({ cert }: CertificateCardProps) => {
       whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(90, 45, 130, 0.3)" }}
     >
       <div className="flex flex-col items-center h-full">
-        <div className="w-20 h-20 rounded-full bg-cyber-purple/20 flex items-center justify-center mb-4 group-hover:bg-cyber-purple/30 transition-all duration-300">
-          <Award className="h-8 w-8 text-cyber-purple" />
+        <div className="w-32 h-32 flex items-center justify-center mb-4">
+          <img 
+            src={`/images/certs/${cert.logo}.png`} 
+            alt={`${cert.name} badge`}
+            className="w-full h-full object-contain"
+          />
         </div>
         
         <h3 className="text-white font-bold mb-2 text-center">{cert.name}</h3>
