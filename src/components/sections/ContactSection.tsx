@@ -57,7 +57,7 @@ export default function ContactSection() {
     } catch (error) {
       setSubmitStatus("error");
       if (error instanceof TypeError && error.message.includes("NetworkError")) {
-        setErrorMessage("Network error. Please check your internet connection or try again later.");
+        setErrorMessage("Network error. This usually means: (1) The form ID doesn't exist in Formspree, (2) Your domain isn't whitelisted in Formspree settings, or (3) You're testing from a local file. Please email directly: sanidhyasonii@proton.me");
       } else {
         setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again or email directly at sanidhyasonii@proton.me");
       }
@@ -214,9 +214,9 @@ export default function ContactSection() {
                   />
                 </div>
                 
-                {/* Formspree hidden fields */}
+                {/* Formspree hidden fields - must be static, not React bindings */}
                 <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
-                <input type="hidden" name="_replyto" value={formData.email} />
+                <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission" />
                 
                 <button
                   type="submit"
