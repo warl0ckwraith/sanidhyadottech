@@ -1,0 +1,11 @@
+{
+  "build": {
+    "env": {
+      "HUGO_VERSION": "0.138.0"
+    }
+  },
+  "buildCommand": "hugo --gc --minify",
+  "outputDirectory": "public",
+  "installCommand": "echo 'Hugo is pre-installed on Vercel'",
+  "framework": null
+}
