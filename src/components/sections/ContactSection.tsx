@@ -36,15 +36,9 @@ export default function ContactSection() {
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
+          "Accept": "application/json"
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message
-        })
+        body: new FormData(e.currentTarget as HTMLFormElement)
       });
 
       if (response.ok) {
@@ -62,7 +56,11 @@ export default function ContactSection() {
       }
     } catch (error) {
       setSubmitStatus("error");
-      setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+      if (error instanceof TypeError && error.message.includes("NetworkError")) {
+        setErrorMessage("Network error. Please check your internet connection or try again later.");
+      } else {
+        setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again or email directly at sanidhyasonii@proton.me");
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -215,6 +213,10 @@ export default function ContactSection() {
                     disabled={isSubmitting}
                   />
                 </div>
+                
+                {/* Formspree hidden fields */}
+                <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+                <input type="hidden" name="_replyto" value={formData.email} />
                 
                 <button
                   type="submit"
