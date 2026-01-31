@@ -1,16 +1,11 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { 
-  Code2, Terminal, Shield, Bug, 
+  Code2, Terminal, Shield, 
   Network, Wifi, Database, GitBranch,
-  // Dock is not available in lucide-react
-  // Using alternative icons for Docker and other tools
   Box,
   Cloud,
   Globe2,
-  LucideNetwork, // For Docker instead of Dock
-  // Removed Python, Java, Cpp, Php, Mysql, Bash, Kotlin, Burpsuite, Wireshark, Metasploit, Aircrack
-  // as they don't exist in lucide-react
 } from "lucide-react";
 
 const skills = {
@@ -24,16 +19,14 @@ const skills = {
     { name: "Kotlin", icon: <Code2 className="h-5 w-5" />, level: "secondary" },
     { name: "Docker", icon: <Box className="h-5 w-5" />, level: "core" },
     { name: "AWS", icon: <Cloud className="h-5 w-5" />, level: "secondary" },
-
   ],
   tools: [
     { name: "Git", icon: <GitBranch className="h-5 w-5" />, level: "core" },
     { name: "Burpsuite", icon: <Globe2 className="h-5 w-5" />, level: "core" },
-    { name: "Wireshark", icon: <LucideNetwork className="h-5 w-5" />, level: "core" },
+    { name: "Wireshark", icon: <Network className="h-5 w-5" />, level: "core" },
     { name: "Metasploit", icon: <Code2 className="h-5 w-5" />, level: "core" },
     { name: "Crackmapexec", icon: <Code2 className="h-5 w-5" />, level: "secondary" },
     { name: "Bloodhound", icon: <Code2 className="h-5 w-5" />, level: "secondary" },
-
   ],
   specializations: [
     { name: "Network Pentesting", icon: <Network className="h-5 w-5" />, level: "core" },
@@ -43,14 +36,12 @@ const skills = {
     { name: "Source Code Review", icon: <Terminal className="h-5 w-5" />, level: "secondary" },
     { name: "Red Team Operations", icon: <Terminal className="h-5 w-5" />, level: "core" },
     { name: "CTF Development", icon: <Code2 className="h-5 w-5" />, level: "core" },
-    { name: "Digital Forensics", icon: <Box className="h-5 w-5" />, level: "secondary" },  
- 
+    { name: "Digital Forensics", icon: <Box className="h-5 w-5" />, level: "secondary" },
   ]
 };
 
 export default function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
 
   return (
     <section id="skills" className="py-24 bg-black relative overflow-hidden">
@@ -70,6 +61,8 @@ export default function SkillsSection() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
+                aria-label={`Filter by ${category}`}
+                aria-pressed={activeCategory === category}
                 className={cn(
                   "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
                   activeCategory === category 
@@ -160,34 +153,6 @@ export default function SkillsSection() {
                     ))}
                   </div>
                 </div>
-                
-                {/* Professional Competence */}
-                {/* <div className={cn("space-y-4", activeCategory !== "all" && activeCategory !== "professional" && "hidden")}>
-                  <h3 className="text-lg font-medium text-white flex items-center">
-                    <Bug className="h-5 w-5 text-cyber-purple mr-2" /> */}
-                    {/* Professional Competence */}
-                  {/* </h3> */}
-                  {/* <div className="space-y-3">
-                    {skills.professional.map((skill) => (
-                      <div
-                        key={skill.title}
-                        className={cn(
-                          "bg-gray-800/50 rounded-lg p-4 transition-all duration-300",
-                          expandedSkill === skill.title ? "bg-cyber-purple/20" : "hover:bg-gray-700/50"
-                        )}
-                        onClick={() => setExpandedSkill(expandedSkill === skill.title ? null : skill.title)}
-                      >
-                        <div className="flex items-center gap-2 cursor-pointer">
-                          {skill.icon}
-                          <h4 className="text-cyber-purple font-medium">{skill.title}</h4>
-                        </div>
-                        {expandedSkill === skill.title && (
-                          <p className="text-gray-300 mt-2 text-sm">{skill.description}</p>
-                        )}
-                      </div>
-                    ))}
-                  </div> */}
-                {/* </div> */}
               </div>
             </div>
           </div>
