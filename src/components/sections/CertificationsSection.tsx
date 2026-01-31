@@ -8,7 +8,9 @@ interface Certification {
   name: string;
   organization: string;
   date: string;
-  logo: string;
+  logo?: string;
+  logoType?: 'image' | 'background' | 'none';
+  backgroundImage?: string;
   verifyLink: string;
 }
 
@@ -19,6 +21,7 @@ const certifications: Certification[] = [
     organization: "OffSec",
     date: "2023",
     logo: "oscp",
+    logoType: 'image',
     verifyLink: "https://www.credential.net/ea6beae4-9282-4c1d-9bbc-13efaa15b832",
   },
   {
@@ -27,23 +30,25 @@ const certifications: Certification[] = [
     organization: "OffSec",
     date: "2023",
     logo: "oswp",
+    logoType: 'image',
     verifyLink: "https://www.credential.net/e1677b26-b944-4aae-99c0-ac34bb1ebb8f",
   },
   {
     id: 3,
-    name: "Certified Network Security Practitioner (CNSP)",
-    organization: "SecOps Group",
-    date: "2022",
-    logo: "cnsp",
-    verifyLink: "https://candidate.speedexam.net/certificate.aspx?SSTATE=am4131EniU8ntjp4bO5mXTHb++lDiZvEBDD0QEpKsbUFhClttZdVAknN3CoXNvVkebndg2pYVHS6ev+q5Blht5sIxrULNGWX/SmqRAu1TLk=",
-  },
-  {
-    id: 4,
     name: "Fortinet Network Security Expert Level 2",
     organization: "Fortinet",
     date: "2022",
-    logo: "fortinet",
+    logoType: 'background',
+    backgroundImage: "https://nseti-pdfs.s3.us-west-2.amazonaws.com/img/cert_banner_fca_cybersecurity.jpg",
     verifyLink: "https://www.fortinet.com/training/certification/verification",
+  },
+  {
+    id: 4,
+    name: "Certified Network Security Practitioner (CNSP)",
+    organization: "SecOps Group",
+    date: "2022",
+    logoType: 'none',
+    verifyLink: "https://candidate.speedexam.net/certificate.aspx?SSTATE=am4131EniU8ntjp4bO5mXTHb++lDiZvEBDD0QEpKsbUFhClttZdVAknN3CoXNvVkebndg2pYVHS6ev+q5Blht5sIxrULNGWX/SmqRAu1TLk=",
   }
 ];
 
@@ -58,12 +63,32 @@ const CertificateCard = ({ cert }: CertificateCardProps) => {
       whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(90, 45, 130, 0.3)" }}
     >
       <div className="flex flex-col items-center h-full">
+        {/* Logo/Badge Display */}
         <div className="w-32 h-32 flex items-center justify-center mb-4">
-          <img 
-            src={`/images/certs/${cert.logo}.png`} 
-            alt={`${cert.name} badge`}
-            className="w-full h-full object-contain"
-          />
+          {cert.logoType === 'image' && cert.logo && (
+            <img 
+              src={`/images/certs/${cert.logo}.png`} 
+              alt={`${cert.name} badge`}
+              className="w-full h-full object-contain"
+            />
+          )}
+          {cert.logoType === 'background' && cert.backgroundImage && (
+            <div 
+              className="w-full h-full rounded-lg"
+              style={{
+                backgroundImage: `url("${cert.backgroundImage}")`,
+                backgroundSize: 'contain',
+                backgroundPosition: 'center',
+                backgroundColor: '#f2f2f4',
+                backgroundRepeat: 'no-repeat'
+              }}
+            />
+          )}
+          {cert.logoType === 'none' && (
+            <div className="w-20 h-20 rounded-full bg-cyber-purple/20 flex items-center justify-center">
+              <Award className="h-8 w-8 text-cyber-purple" />
+            </div>
+          )}
         </div>
         
         <h3 className="text-white font-bold mb-2 text-center">{cert.name}</h3>
