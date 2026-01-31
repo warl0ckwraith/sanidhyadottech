@@ -35,12 +35,7 @@ export default function AboutSection() {
               Right now, I spend most of my time building security labs, testing systems, and occasionally jumping into CTFs just to keep myself sharp (and have a little fun).
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 items-start justify-between mt-8">
-              <div>
-                <h4 className="text-cyber-purple font-medium mb-2">Email</h4>
-                <p className="text-white">sanidhyasonii@proton.me</p>
-              </div>
-              
+            <div className="flex flex-col sm:flex-row gap-6 items-start mt-8">
               <div>
                 <a 
                   href="https://linkedin.com/in/sanidhyasonii" 

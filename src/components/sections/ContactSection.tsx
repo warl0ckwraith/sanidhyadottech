@@ -1,5 +1,21 @@
-import { Mail, Linkedin, MapPin, Send, Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, MapPin, Send, Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import { useForm } from "@formspree/react";
+
+function LinkedinLogo({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+      <path d="M20.45 20.45H17v-5.4c0-1.3-.03-2.97-1.81-2.97-1.82 0-2.1 1.42-2.1 2.88v5.49H9.64V9h3.3v1.56h.05c.46-.86 1.58-1.76 3.25-1.76 3.47 0 4.2 2.28 4.2 5.24v6.41ZM5.56 7.43a2.03 2.03 0 1 1 0-4.06 2.03 2.03 0 0 1 0 4.06Zm-1.73 13.02h3.45V9H3.83v11.45Z" />
+    </svg>
+  );
+}
+
+function GithubLogo({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+      <path d="M12 .6a11.4 11.4 0 0 0-3.6 22.2c.57.1.78-.25.78-.55v-2.1c-3.18.69-3.85-1.38-3.85-1.38-.52-1.32-1.26-1.67-1.26-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.2 1.76 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.54-.29-5.21-1.27-5.21-5.64 0-1.25.45-2.28 1.2-3.08-.12-.3-.52-1.5.12-3.12 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.8 0c2.2-1.49 3.18-1.18 3.18-1.18.64 1.62.24 2.82.12 3.12.75.8 1.2 1.83 1.2 3.08 0 4.38-2.68 5.35-5.23 5.63.41.36.78 1.07.78 2.17v3.22c0 .3.2.66.8.55A11.4 11.4 0 0 0 12 .6Z" />
+    </svg>
+  );
+}
 
 export default function ContactSection() {
   const [state, handleSubmit] = useForm("xnjvedoq");
@@ -43,12 +59,24 @@ export default function ContactSection() {
                 
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-cyber-purple/20 rounded-full">
-                    <Linkedin className="h-5 w-5 text-cyber-purple" />
+                    <LinkedinLogo className="h-5 w-5 text-cyber-purple" />
                   </div>
                   <div>
                     <h4 className="text-white font-medium">LinkedIn</h4>
                     <a href="https://linkedin.com/in/sanidhyasonii" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-cyber-neon transition-colors">
                       linkedin.com/in/sanidhyasonii
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-cyber-purple/20 rounded-full">
+                    <GithubLogo className="h-5 w-5 text-cyber-purple" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium">GitHub</h4>
+                    <a href="https://github.com/warl0ckwraith" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-cyber-neon transition-colors">
+                      github.com/warl0ckwraith
                     </a>
                   </div>
                 </div>
