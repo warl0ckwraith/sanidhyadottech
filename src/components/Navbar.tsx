@@ -57,7 +57,7 @@ export default function Navbar() {
       )}
       style={{ height: '60px' }}
     >
-      <div className="container mx-auto px-4 h-full flex items-center justify-between">
+      <div className="container mx-auto px-4 h-full flex items-center justify-center">
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           {navItems.map((item) => (
@@ -88,17 +88,15 @@ export default function Navbar() {
           ))}
         </nav>
         {/* Mobile Menu Button */}
-        <div className="flex items-center gap-4">
-          <motion.button 
-            className="md:hidden text-[#c0bfe0] hover:text-white"
-            onClick={() => setIsOpen(!isOpen)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-          >
-            {isOpen ? <X /> : <Menu />}
-          </motion.button>
-        </div>
+        <motion.button 
+          className="md:hidden absolute right-4 text-[#c0bfe0] hover:text-white"
+          onClick={() => setIsOpen(!isOpen)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+        >
+          {isOpen ? <X /> : <Menu />}
+        </motion.button>
       </div>
       {/* Mobile Menu */}
       <div 
