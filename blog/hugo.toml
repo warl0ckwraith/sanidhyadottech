@@ -10,7 +10,7 @@ theme = 'mana'
   pageSize = 10
 
 [params]
-  description = "Security research, CTF writeups, and publications"
+  description = "Security engineering, Offensive security, Red teaming, CTFs etc"
   favicon = "/favicon/favicon.ico"
   footerText = ""
   heroTitleLine1 = "Security"
