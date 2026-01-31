@@ -115,7 +115,7 @@ export default function HeroSection() {
               Get in Touch
             </button>
             <a
-              href="/resume.pdf"
+              href="/sanidhya-resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 border-2 border-cyber-purple text-cyber-neon font-medium rounded hover:bg-cyber-purple/10 transition-all duration-300 hover:-translate-y-1"
