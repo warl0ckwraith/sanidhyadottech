@@ -56,11 +56,7 @@ export default function ContactSection() {
       }
     } catch (error) {
       setSubmitStatus("error");
-      if (error instanceof TypeError && error.message.includes("NetworkError")) {
-        setErrorMessage("Network error. This usually means: (1) The form ID doesn't exist in Formspree, (2) Your domain isn't whitelisted in Formspree settings, or (3) You're testing from a local file. Please email directly: sanidhyasonii@proton.me");
-      } else {
-        setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again or email directly at sanidhyasonii@proton.me");
-      }
+      setErrorMessage("Failed to send message. Please try again or email directly at sanidhyasonii@proton.me");
     } finally {
       setIsSubmitting(false);
     }
