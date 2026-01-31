@@ -58,19 +58,6 @@ export default function Navbar() {
       style={{ height: '60px' }}
     >
       <div className="container mx-auto px-4 h-full flex items-center justify-between">
-        {/* Logo */}
-        <motion.a 
-          href="#about"
-          className="font-mono font-bold text-lg tracking-tight text-white relative group"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          aria-label="About"
-        >
-          <span className="relative z-10 group-hover:text-cyber-neon transition-colors duration-200">
-            SS
-          </span>
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyber-neon group-hover:w-full transition-all duration-300"></span>
-        </motion.a>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           {navItems.map((item) => (
