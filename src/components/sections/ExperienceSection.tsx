@@ -16,7 +16,6 @@ const experiences = [
     achievements: [
       "Developed scalable CTF infrastructure for security competitions",
       "Conducted comprehensive security assessments for clients",
-      "Created digital forensics challenges for security conferences"
     ]
   },
   {
@@ -66,7 +65,6 @@ const experiences = [
     period: "Jan 2022 - May 2022",
     description: "Conducted thorough penetration testing across web, mobile, and network environments. Performed source code reviews and utilized the MITRE ATT&CK framework for enhanced threat detection.",
     achievements: [
-      "Achieved 1st place in the final internship assessment",
       "Conducted penetration testing across web, mobile, and network environments",
       "Performed source code reviews and utilized the MITRE ATT&CK framework"
     ]

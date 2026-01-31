@@ -34,7 +34,7 @@ Feel free to reach out:
 - 📧 Email: sanidhyasonii@proton.me
 - 💼 LinkedIn: [linkedin.com/in/sanidhyasonii](https://www.linkedin.com/in/sanidhyasonii)
 
-Stay tuned for more content. Happy hacking! 🔐
+Stay tuned for more content. 🔐
 
 > [!TIP]
 > Use the search feature above to find specific topics, or browse by tags to explore different areas of security.
