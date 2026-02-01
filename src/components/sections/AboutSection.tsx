@@ -36,7 +36,7 @@ export default function AboutSection() {
                 <a 
                   href="https://linkedin.com/in/sanidhyasonii" 
                   target="_blank" 
-                  rel="noopener noreferrer"
+                  rel="me noopener noreferrer"
                   className="px-4 py-2 border border-cyber-purple text-cyber-neon bg-cyber-purple/10 hover:bg-cyber-purple/30 rounded-lg transition-all"
                 >
                   LinkedIn
