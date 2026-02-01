@@ -63,7 +63,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="text-white font-medium">LinkedIn</h4>
-                    <a href="https://linkedin.com/in/sanidhyasonii" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-cyber-neon transition-colors">
+                    <a href="https://linkedin.com/in/sanidhyasonii" target="_blank" rel="me noopener noreferrer" className="text-gray-300 hover:text-cyber-neon transition-colors">
                       linkedin.com/in/sanidhyasonii
                     </a>
                   </div>
@@ -75,7 +75,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="text-white font-medium">GitHub</h4>
-                    <a href="https://github.com/warl0ckwraith" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-cyber-neon transition-colors">
+                    <a href="https://github.com/warl0ckwraith" target="_blank" rel="me noopener noreferrer" className="text-gray-300 hover:text-cyber-neon transition-colors">
                       github.com/warl0ckwraith
                     </a>
                   </div>
