@@ -14,3 +14,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://sanidhya.tech/sitemap.xml
+Sitemap: https://blog.sanidhya.tech/sitemap.xml
