@@ -67,7 +67,7 @@ const CertificateCard = ({ cert }: CertificateCardProps) => {
           {cert.logoType === 'image' && cert.logo && (
             <img 
               src={`/images/certs/${cert.logo}.png`} 
-              alt={`${cert.name} badge`}
+              alt={`Sanidhya Soni - ${cert.name} Certified`}
               className="w-full h-full object-contain"
             />
           )}
