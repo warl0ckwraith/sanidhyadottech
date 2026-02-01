@@ -1,0 +1,15 @@
+:root {
+  --image-bg: #ffffff;
+}
+
+[data-theme="light"] {
+  --image-bg: var(--bg-secondary);
+}
+
+.post-image,
+.post-image img,
+.post-image-single,
+.post-image-single img,
+.post-content-main img {
+  background-color: var(--image-bg);
+}
