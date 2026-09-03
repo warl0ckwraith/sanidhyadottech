@@ -4,7 +4,7 @@ title = 'Sanidhya Soni'
 theme = 'mana'
 
 [outputs]
-  home = ["HTML", "JSON"]  # Enable search functionality
+  home = ["HTML", "RSS", "JSON"]  # RSS feed + search index
 
 [pagination]
   pageSize = 10
