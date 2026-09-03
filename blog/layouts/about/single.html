@@ -1,0 +1,27 @@
+{{ define "main" }}
+  <article class="about-page">
+    <header class="about-header about-header--lead">
+      {{ $avatarUrl := site.Params.avatar.about.url | default site.Params.avatar.url }}
+      {{ if $avatarUrl }}
+        <img src="{{ $avatarUrl }}" alt="" class="about-page-avatar" aria-hidden="true">
+      {{ end }}
+
+      <div class="about-lead">
+        {{ with .Params.headline }}
+          <h1 class="about-headline">{{ . }}</h1>
+        {{ else }}
+          <h1 class="about-headline">{{ .Title }}</h1>
+        {{ end }}
+        {{ if site.Params.social }}
+          <div class="about-page-social">
+            {{ partial "social-links.html" . }}
+          </div>
+        {{ end }}
+      </div>
+    </header>
+
+    <div class="about-content-full">
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}
