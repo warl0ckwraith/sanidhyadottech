@@ -1,6 +1,6 @@
-baseURL = 'https://blog.sanidhya.tech/'
+baseURL = 'https://sanidhya.tech/'
 languageCode = 'en-us'
-title = 'Sanidhya Soni - Security Blog'
+title = 'Sanidhya Soni'
 theme = 'mana'
 
 [outputs]
@@ -10,11 +10,11 @@ theme = 'mana'
   pageSize = 10
 
 [params]
-  description = "A personal blog about technology, media, and... well, everything"
+  description = "I build and harden security systems, informed by knowing exactly how they break."
   favicon = "/favicon/favicon.ico"
   footerText = ""
   heroTitleLine1 = "Security"
-  heroTitleLine2 = "Research, Publications & CTFs"
+  heroTitleLine2 = "Engineering & Research"
   
   [params.avatar]
     url = "/images/transparent-logo.png"
@@ -25,13 +25,13 @@ theme = 'mana'
     email = "sanidhyasonii@proton.me"
 
 [[menus.main]]
-  name = 'Home'
-  pageRef = '/'
+  name = 'Writing'
+  pageRef = '/posts'
   weight = 10
 
 [[menus.main]]
-  name = 'Posts'
-  pageRef = '/posts'
+  name = 'Work'
+  url = '/work/'
   weight = 20
 
 [[menus.main]]
@@ -44,13 +44,10 @@ theme = 'mana'
   url = '/about/'
   weight = 40
 
-[[menus.main]]
-  name = 'Portfolio'
-  url = 'https://sanidhya.tech'
-  weight = 50
-
 [markup]
   [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
     [markup.goldmark.parser]
       [markup.goldmark.parser.attribute]
         block = true

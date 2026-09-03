@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://blog.sanidhya.tech/sitemap.xml
+Sitemap: https://sanidhya.tech/sitemap.xml
