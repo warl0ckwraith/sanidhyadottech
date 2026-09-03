@@ -22,10 +22,10 @@ I also hold [OSCP](https://www.credential.net/ea6beae4-9282-4c1d-9bbc-13efaa15b8
 
 
 
-Graduated from Vellore Institute of Technology, Bhopal, with a degree in Computer Science Engineering, specializing in Cyber Security and Digital Forensics. I also led the OWASP student chapter there. 
+Graduated from **Vellore Institute of Technology, Bhopal**, with a degree in Computer Science Engineering, specializing in Cyber Security and Digital Forensics. I also led the **OWASP** student chapter there. 
 
 
-Before that, I did some security work at CyberWarFare Labs and the Indian Army. I also work as an independent contractor, doing security testing and building CTF infrastructure for companies and security events.
+Before that, I did some security work at **CyberWarFare Labs** and the **Indian Army**. I also work as an **independent contractor**, doing security testing and building CTF infrastructure for companies and security events.
 
 
 What I want to do next is more engineering and research: finding bugs at scale and working on their root causes. I write about what I find [here](/posts/).
