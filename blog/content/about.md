@@ -30,6 +30,8 @@ Before that, I did some security work at CyberWarFare Labs and the Indian Army. 
 
 What I want to do next is more engineering and research: finding bugs at scale and working on their root causes. I write about what I find [here](/posts/).
 
-I'm open to security engineering and research work. Email is the fastest way to reach me.
+I'm open to security engineering and research work, or to talking through a bug you're looking at.
 
-**[sanidhyasonii@proton.me](mailto:sanidhyasonii@proton.me)**
+Email is the fastest way to reach me.
+
+<p class="about-cta"><a href="mailto:sanidhyasonii@proton.me">Email me</a></p>

@@ -137,3 +137,31 @@
     gap: var(--spacing-md);
   }
 }
+
+/* Contact CTA. Same idea as a bordered button, but in this site's language:
+   mono, letterspaced, hairline border — not a solid marketing button. */
+.about-content-full .about-cta {
+  margin-top: var(--spacing-lg);
+}
+
+.about-content-full .about-cta a {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid var(--accent-primary);
+  border-radius: 4px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--accent-primary);
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.about-content-full .about-cta a:hover,
+.about-content-full .about-cta a:focus-visible {
+  background-color: var(--accent-primary);
+  color: var(--bg-deep);
+  text-decoration: none;
+}
