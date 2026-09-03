@@ -1,6 +1,11 @@
 {{- /* Robots meta tag for SEO */ -}}
 {{- if eq .Kind "404" -}}
 <meta name="robots" content="noindex, follow">
+{{- else if and (eq .Kind "term") (lt (len .Pages) 3) -}}
+  {{- /* Thin taxonomy pages: one or two posts isn't a useful landing page,
+         and they dilute what Google judges the site on. Follow, don't index,
+         until the tag earns its own page. */ -}}
+<meta name="robots" content="noindex, follow">
 {{- else -}}
   {{- $robots := slice -}}
   {{- if .Params.noindex -}}

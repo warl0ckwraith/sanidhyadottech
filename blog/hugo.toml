@@ -11,6 +11,9 @@ theme = 'mana'
 
 [params]
   description = "I build and harden security systems, informed by knowing exactly how they break."
+  seoTitle = "Sanidhya Soni — Security Engineer"
+  ogImage = "/images/og-default.png"
+  author = "Sanidhya Soni"
   favicon = "/favicon/favicon.ico"
   footerText = ""
   heroTitleLine1 = "Security"
@@ -38,6 +41,9 @@ theme = 'mana'
   name = 'About'
   url = '/about/'
   weight = 30
+
+[taxonomies]
+  tag = "tags"
 
 [markup]
   [markup.goldmark]

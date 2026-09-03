@@ -1,0 +1,51 @@
+{{- /* Social card image. Must be an absolute URL — relative paths are rejected
+       by every major platform. Per-page `image` wins, else the site default. */ -}}
+{{- $image := "" -}}
+{{- with .Params.image -}}
+  {{- $image = . | absURL -}}
+{{- else -}}
+  {{- $image = site.Params.ogImage | default "/images/og-default.png" | absURL -}}
+{{- end -}}
+
+{{- $title := cond .IsHome (site.Params.ogTitle | default site.Title) (printf "%s | %s" .Title site.Title) -}}
+
+{{- $description := "" -}}
+{{- if .Description -}}
+  {{- $description = .Description -}}
+{{- else if .IsHome -}}
+  {{- $description = site.Params.description -}}
+{{- else -}}
+  {{- $description = .Summary | plainify | truncate 160 -}}
+{{- end -}}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="{{ $image }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ $title }}">
+{{- if .IsPage }}
+  <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+  <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{- with .Params.author }}<meta property="article:author" content="{{ . }}">{{ end }}
+  {{- with .Params.tags }}
+    <meta property="article:section" content="{{ index . 0 }}">
+    {{- range . }}<meta property="article:tag" content="{{ . }}">{{ end }}
+  {{- end }}
+{{- end }}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $image }}">
+<meta name="twitter:image:alt" content="{{ $title }}">
+{{- with site.Params.social.twitter }}
+  <meta name="twitter:site" content="@{{ . }}">
+  <meta name="twitter:creator" content="@{{ . }}">
+{{- end -}}
