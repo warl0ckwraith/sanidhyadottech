@@ -12,16 +12,15 @@
   })();
 </script>
 <title>{{ if .IsHome }}{{ site.Params.seoTitle | default site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
-<meta
-  name="description"
-  content="{{ if .Description }}
-    {{ .Description }}
-  {{ else if .IsHome }}
-    {{ site.Params.description }}
-  {{ else }}
-    {{ .Summary | plainify | truncate 160 }}
-  {{ end }}
-  ">
+{{- $desc := "" -}}
+{{- if .Description -}}
+  {{- $desc = .Description -}}
+{{- else if .IsHome -}}
+  {{- $desc = site.Params.description -}}
+{{- else -}}
+  {{- $desc = .Summary | plainify | truncate 160 -}}
+{{- end }}
+<meta name="description" content="{{ $desc | chomp }}">
 
 {{ if .Params.tags }}
   <meta name="keywords" content="{{ delimit .Params.tags ", " }}">

@@ -6,7 +6,7 @@ draft: false
 type: "about"
 aliases: ["/work/"]
 headline: "I'm a security engineer. I build tools, find bugs, and write about both."
-description: "focused on vulnerability research and security tooling. OSCP, OSWP, and loves to compete occasionally in CTFs"
+description: "Security engineer focused on vulnerability research and tooling. I found CVE-2025-65875, an RCE in FPDF. OSCP and OSWP certified."
 ---
 
 I got into security by messing around with tools and technologies I barely understood until something
