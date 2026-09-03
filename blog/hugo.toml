@@ -25,24 +25,19 @@ theme = 'mana'
     email = "sanidhyasonii@proton.me"
 
 [[menus.main]]
-  name = 'Writing'
+  name = 'Work'
   pageRef = '/posts'
   weight = 10
 
 [[menus.main]]
-  name = 'Work'
-  url = '/work/'
-  weight = 20
-
-[[menus.main]]
   name = 'Tags'
   pageRef = '/tags'
-  weight = 30
+  weight = 20
 
 [[menus.main]]
   name = 'About'
   url = '/about/'
-  weight = 40
+  weight = 30
 
 [markup]
   [markup.goldmark]
