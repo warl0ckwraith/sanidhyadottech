@@ -12,18 +12,23 @@ description: "focused on vulnerability research and security tooling. OSCP, OSWP
 I got into security by messing around with tools and technologies I barely understood until something
 clicked. That eventually turned into pentesting, red teaming, and engineering security infrastructure.
 
+
 Most recently I found [CVE-2025-65875](/posts/security-research/cve-2025-65875-fpdf-rce-vulnerability/),
 a remote code execution bug in FPDF: Affects everything up to 1.86.
+
 
 I also hold [OSCP](https://www.credential.net/ea6beae4-9282-4c1d-9bbc-13efaa15b832) and
 [OSWP](https://www.credential.net/e1677b26-b944-4aae-99c0-ac34bb1ebb8f) from OffSec.
 
 
-I graduated from Vellore Institute of Technology, Bhopal, with a degree in Computer Science Engineering, specializing in Cyber Security and Digital Forensics. I also led the OWASP student chapter there. 
+
+Graduated from Vellore Institute of Technology, Bhopal, with a degree in Computer Science Engineering, specializing in Cyber Security and Digital Forensics. I also led the OWASP student chapter there. 
+
 
 Before that, I did some security work at CyberWarFare Labs and the Indian Army. I also work as an independent contractor, doing security testing and building CTF infrastructure for companies and security events.
 
-What I want to do next is more engineering and research: finding bugs at scale and working on their root causes. I write about what I find[here](/posts/).
+
+What I want to do next is more engineering and research: finding bugs at scale and working on their root causes. I write about what I find [here](/posts/).
 
 I'm open to security engineering and research work. Email is the fastest way to reach me.
 
