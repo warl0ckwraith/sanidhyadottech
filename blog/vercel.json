@@ -51,5 +51,18 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "blog.sanidhya.tech"
+        }
+      ],
+      "destination": "https://sanidhya.tech/$1",
+      "permanent": true
+    }
   ]
 }
