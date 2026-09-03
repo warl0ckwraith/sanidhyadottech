@@ -14,7 +14,6 @@ theme = 'mana'
   seoTitle = "Sanidhya Soni — Security Engineer"
   ogImage = "/images/og-default.png"
   author = "Sanidhya Soni"
-  favicon = "/favicon/favicon.ico"
   footerText = ""
   heroTitleLine1 = "Security"
   heroTitleLine2 = "Engineering & Research"
