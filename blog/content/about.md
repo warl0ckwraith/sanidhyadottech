@@ -1,12 +1,11 @@
 ---
 title: "Security Engineer"
-date: 2026-01-31T16:00:00Z
-lastmod: 2026-09-03
+lastmod: 2026-09-05
 draft: false
 type: "about"
 aliases: ["/work/"]
 headline: "I'm a security engineer. I build tools, find bugs, and write about both."
-description: "Security engineer focused on vulnerability research and tooling. I found CVE-2025-65875, an RCE in FPDF. OSCP and OSWP certified."
+description: "Security engineer focused on vulnerability research and tooling. OSCP and OSWP certified."
 ---
 
 <dl class="about-facts">
@@ -36,7 +35,7 @@ there.
 companies and security events.
 
 What I want to do next is more engineering and research: finding bugs at scale and working
-on their root causes. I write about what I find [here](/posts/).
+on their root causes. I write [here](/posts/).
 
 ## Get in touch
 
