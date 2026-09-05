@@ -4,7 +4,7 @@ date: 2026-09-05
 draft: false
 tags: ["hardening", "linux", "windows", "defensive", "sysadmin", "blue-team"]
 author: "Sanidhya Soni"
-description: "A hands-on pass at securing Linux and Windows systems: patching, firewalls, accounts, SSH, sysctl, logging, and automating the Windows side with HardeningKitty."
+description: "A hands-on guide at securing Linux and Windows systems"
 ---
 
 **By Sanidhya Soni** | *September 05, 2026*
