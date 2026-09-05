@@ -210,7 +210,7 @@ sudo rsync -aAX --delete /source/ /backup/destination/
 
 On Windows most of this is automatable with **HardeningKitty**. It checks your config against a finding list and can push the recommended settings for you. Better still, it ships lists for Microsoft's own baselines, the CIS Benchmarks, DoD STIG, and BSI SiSyPHuS, so you're hardening to a recognised standard instead of a hunch.
 
-Repo: [github.com/scipag/HardeningKitty](https://github.com/scipag/HardeningKitty) — the signed, maintained fork of the original `windows_hardening`.
+Repo: [github.com/scipag/HardeningKitty](https://github.com/scipag/HardeningKitty) 
 
 {{< figure
     src="/images/os-hardening-linux-windows/hardeningkitty-audit.png"
