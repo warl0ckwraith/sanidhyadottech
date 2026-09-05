@@ -19,14 +19,13 @@ One thing up front: none of this makes you "compliant" with anything by itself. 
 
 ## What hardening actually means
 
-System hardening is the broad practice. OS hardening is the part of it that deals with the operating system itself: the kernel, the running services, the user accounts, the config that everything else sits on top of. Same idea at every level. Less surface, fewer ways in for an attacker.
+System hardening is a broad practice. OS hardening is the part of it that deals with the operating system itself: the kernel, the running services, the user accounts, configs that everything else sits on top of. Same idea at every level. Less surface, fewer ways in for an attacker.
 
-<figure>
-
-![The five categories of systems hardening: server, software, operating system, database and network](/images/os-hardening-linux-windows/hardening-categories.png)
-<figcaption>The main categories of system hardening. Source: <a href="https://www.pynetlabs.com/what-is-device-hardening/">pynetlabs.com</a>.</figcaption>
-
-</figure>
+{{< figure
+    src="/images/os-hardening-linux-windows/hardening-categories.png"
+    alt="The five categories of systems hardening: server, software, operating system, database and network"
+    caption="The main categories of system hardening. Source: pynetlabs.com."
+>}}
 
 Most of the work falls into a handful of buckets:
 
@@ -213,12 +212,11 @@ On Windows most of this is automatable with **HardeningKitty**. It checks your c
 
 Repo: [github.com/scipag/HardeningKitty](https://github.com/scipag/HardeningKitty) — the signed, maintained fork of the original `windows_hardening`.
 
-<figure>
-
-![HardeningKitty running an audit in PowerShell, printing passed account-policy findings](/images/os-hardening-linux-windows/hardeningkitty-audit.png)
-<figcaption>HardeningKitty auditing a Windows box.</figcaption>
-
-</figure>
+{{< figure
+    src="/images/os-hardening-linux-windows/hardeningkitty-audit.png"
+    alt="HardeningKitty running an audit in PowerShell, printing passed account-policy findings"
+    caption="HardeningKitty auditing a Windows box."
+>}}
 
 ### Install it
 
