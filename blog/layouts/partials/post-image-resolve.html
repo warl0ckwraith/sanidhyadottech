@@ -1,0 +1,27 @@
+{{/*
+  Project override.
+
+  The theme resolves a post's visual image (hero on the single page, thumbnail
+  on list cards) from `.Params.image` or by auto-discovering a file named after
+  the post title. On this site `image` is reserved for the social/OG card
+  (see partials/head/opengraph.html and head/json-ld.html) and must never be
+  rendered on the page, and title-based auto-discovery is an accident waiting
+  to happen. So: no auto-discovery, and an on-page image only when a post
+  explicitly opts in with `cover` in front matter.
+
+  Returns the same shape as the theme partial: {image, imageResource}.
+*/}}
+{{ $image := .Params.cover }}
+{{ $imageResource := false }}
+
+{{ with $image }}
+  {{ $imageResource = $.Resources.Get . }}
+  {{ if not $imageResource }}
+    {{ $imageResource = $.Resources.GetMatch . }}
+  {{ end }}
+  {{ if not $imageResource }}
+    {{ $imageResource = resources.Get . }}
+  {{ end }}
+{{ end }}
+
+{{ return (dict "image" $image "imageResource" $imageResource) }}

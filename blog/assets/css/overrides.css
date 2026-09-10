@@ -14,6 +14,39 @@
   background-color: var(--image-bg);
 }
 
+/* ---- Post body images --------------------------------------------------- */
+/* The theme styles h2/p/a/pre inside .post-content-main but nothing for
+   images, so a wide figure would overflow the column. Constrain to the
+   text width, keep the intrinsic aspect ratio, and frame it. */
+.post-content-main figure {
+  margin: var(--spacing-xl) 0;
+}
+
+.post-content-main img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
+.post-content-main figure img {
+  border: 1px solid var(--border-color);
+}
+
+.post-content-main figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.post-content-main figcaption p {
+  margin: 0;
+}
+
 /* ---- About page ---------------------------------------------------------- */
 
 /* Header: lead with what he does, not the word "About". */
