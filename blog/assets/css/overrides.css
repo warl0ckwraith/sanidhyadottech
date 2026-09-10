@@ -239,3 +239,254 @@
     gap: 0.15rem;
   }
 }
+
+/* ====================================================================== */
+/* Home page + global UX fixes                                            */
+/* ====================================================================== */
+
+/* ---- Global: a visible, consistent focus ring ------------------------- */
+/* The theme only styles :focus on a handful of header buttons; everything
+   else (nav links, theme/search toggles, card links, tags, footer) falls
+   back to the UA default. One token, applied everywhere. */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* ---- Global: honour prefers-reduced-motion --------------------------- */
+/* Nothing in the theme respects it. The hero logo floats forever, scroll
+   is smooth, and there are fade/slide keyframes. Kill all of it. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-logo {
+    animation: none;
+  }
+}
+
+/* ---- Perf: don't pin the gradient to the viewport -------------------- */
+/* background-attachment: fixed is a known mobile scroll-jank / paint cost
+   and is ignored outright on iOS Safari. The radial gradient looks the
+   same scrolling with the page. */
+body,
+[data-theme="light"] body {
+  background-attachment: scroll;
+}
+
+/* ---- Hero: align its column with the posts list below --------------- */
+/* The theme gives .hero-container max-width 1200 and .home-container 900,
+   so the H1's left edge sits ~120px left of the "Latest writing" heading.
+   Share one column. .hero-section keeps no horizontal padding of its own
+   so it lines up with <main>'s padding at every breakpoint. */
+.hero-container,
+.home-container {
+  max-width: 880px;
+}
+
+.hero-section {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* ---- Hero: text-stroke headline needs a real fallback -------------- */
+/* Theme sets color:transparent + -webkit-text-stroke with no @supports
+   guard: if the stroke doesn't paint, the word is invisible. Fill it,
+   then hollow it out only where the stroke is actually supported. In the
+   light theme use the darker accent so the hairline outline clears
+   contrast on near-white. */
+.hero-title-line2 {
+  color: var(--accent-light-purple);
+}
+
+@supports ((-webkit-text-stroke: 1px currentColor) or (text-stroke: 1px currentColor)) {
+  .hero-title-line2 {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+[data-theme="light"] .hero-title-line2 {
+  -webkit-text-stroke-color: var(--accent-primary);
+  text-stroke: 2px var(--accent-primary);
+}
+
+/* ---- Hero: subtitle + prompt -------------------------------------- */
+/* Drop the blanket opacity (it dims already-secondary text and lands
+   borderline in the light theme) and take the "> " prompt out of the
+   accessible name — it's decorative, screen readers were saying
+   "greater-than sign". */
+.hero-subtitle {
+  opacity: 1;
+  color: var(--text-secondary);
+}
+
+.hero-prompt {
+  color: var(--accent-primary);
+}
+
+/* ---- Hero: call-to-action row ------------------------------------ */
+/* The site had no next step anywhere on the home page. Same visual
+   language as the About page CTA: mono, letter-spaced, hairline border. */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--accent-primary);
+  border-radius: 4px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--accent-primary);
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.hero-cta:hover,
+.hero-cta:focus-visible {
+  background-color: var(--accent-primary);
+  color: var(--bg-deep);
+  text-decoration: none;
+}
+
+.hero-cta--primary {
+  background-color: var(--accent-primary);
+  color: var(--bg-deep);
+}
+
+.hero-cta--primary:hover,
+.hero-cta--primary:focus-visible {
+  background-color: transparent;
+  color: var(--accent-primary);
+}
+
+/* ---- Hero: collapse to one column earlier ----------------------- */
+/* The theme only stacks the hero at 768px, so between 768 and ~900 the
+   H1 is crammed into a ~380px half-column and "Engineering & Research"
+   wraps mid-phrase. */
+@media (max-width: 900px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    text-align: center;
+  }
+
+  .hero-image {
+    order: -1;
+  }
+
+  .hero-logo {
+    max-width: 160px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+}
+
+/* ---- Posts section: real heading hierarchy --------------------- */
+/* .posts-title (h2) and .post-title (h3) were both 1.5rem / 700, so the
+   section header didn't read as superordinate. Make it a small
+   letter-spaced label, matching the About page's section headings. */
+.posts-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--spacing-lg);
+}
+
+.posts-more {
+  display: inline-block;
+  margin-top: var(--spacing-xl);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: var(--accent-primary);
+}
+
+.posts-more:hover,
+.posts-more:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.posts-empty {
+  color: var(--text-secondary);
+}
+
+/* ---- Post cards: real stretched link, no JS click handler ------ */
+/* post-card.html no longer emits data-post-url or inline handlers. The
+   title link is stretched over the whole card so the entire surface is
+   one real anchor: cmd/middle-click work, keyboard focus lands on it,
+   and no navigation.js is involved. Meta text has no links; tags already
+   carry position:relative + z-index in posts.css, so they stay on top. */
+.post-card {
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.post-card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+/* Focus/hover parity: keyboard focus lights up the whole card, not just
+   a text-sized outline. */
+.post-card:focus-within {
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-primary);
+}
+
+.post-card:focus-within .post-title a {
+  text-decoration-color: var(--accent-primary);
+}
+
+.post-card-link:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+}
+
+/* ---- Post cards: visible tag chips in the dark theme ---------- */
+/* --tag-bg is rgba(0,0,0,0.4) over an already-dark glass card, so chips
+   are near-invisible until the hover glow. */
+[data-theme="dark"] .post-tag {
+  background-color: var(--accent-light-purple-rgba-01);
+  border: 1px solid var(--glass-border);
+}
+
+/* ---- Hero spacing on small screens --------------------------- */
+@media (max-width: 640px) {
+  .hero-section {
+    padding-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+}

@@ -10,7 +10,7 @@ theme = 'mana'
   pageSize = 10
 
 [params]
-  description = "I build and harden security systems, informed by knowing exactly how they break."
+  description = "I build and harden security systems."
   seoTitle = "Sanidhya Soni — Security Engineer"
   ogImage = "/images/og-default.png"
   author = "Sanidhya Soni"

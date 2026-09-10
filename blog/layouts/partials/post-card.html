@@ -8,9 +8,19 @@
 {{ if and (not $dataTags) $page.Params.tags }}
   {{ $dataTags = delimit $page.Params.tags "," }}
 {{ end }}
+{{/*
+  Project override. The theme made the whole <article> a click target via a JS
+  handler (data-post-url + navigation.js) with cursor:pointer and
+  onclick="event.stopPropagation()" on every inner link. That breaks
+  cmd/middle-click, gives keyboard users a text-sized target, and needs JS.
+
+  Here the title link is the real link and is stretched over the card with a
+  ::after overlay (see overrides.css). Meta and tag links sit above it with
+  position:relative. No data-post-url, no inline handlers, no JS needed.
+  data-year-month / data-tags stay — filters.js on the archive page reads them.
+*/}}
 <article
   class="post-card"
-  data-post-url="{{ $page.RelPermalink }}"
   {{ if $dataYearMonth }}data-year-month="{{ $dataYearMonth }}"{{ end }}
   {{ if $dataTags }}data-tags="{{ $dataTags }}"{{ end }}>
   {{ partial "post-image.html" $page }}
@@ -18,7 +28,7 @@
 
   <div class="post-content">
     <h3 class="post-title">
-      <a href="{{ $page.RelPermalink }}" onclick="event.stopPropagation();">{{ $page.Title }}</a>
+      <a href="{{ $page.RelPermalink }}" class="post-card-link">{{ $page.Title }}</a>
     </h3>
 
     {{ if $page.Description }}

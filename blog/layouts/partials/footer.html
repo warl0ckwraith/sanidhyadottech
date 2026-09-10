@@ -1,7 +1,12 @@
 <footer class="site-footer">
   <div class="footer-content">
+    {{ if site.Params.social }}
+      <div class="footer-social">
+        {{ partial "social-links.html" . }}
+      </div>
+    {{ end }}
     <p class="footer-text">
-      &copy; {{ now.Year }} Sanidhya Soni. All rights reserved.
+      &copy; {{ now.Year }} Sanidhya Soni
     </p>
   </div>
 </footer>

@@ -14,11 +14,17 @@
               <span class="hero-title-line2">{{ site.Params.heroTitleLine2 }}</span>
             {{ end }}
           </h1>
-          {{ if site.Params.description }}
-            <p class="hero-subtitle">&gt; {{ site.Params.description }}</p>
-          {{ else if site.Description }}
-            <p class="hero-subtitle">&gt; {{ site.Description }}</p>
+          {{ $heroDesc := or site.Params.description site.Description }}
+          {{ with $heroDesc }}
+            <p class="hero-subtitle"><span class="hero-prompt" aria-hidden="true">&gt; </span>{{ . }}</p>
           {{ end }}
+
+          <div class="hero-actions">
+            <a class="hero-cta hero-cta--primary" href="{{ "/posts/" | relLangURL }}">Read my work</a>
+            {{ with site.Params.social.email }}
+              <a class="hero-cta" href="mailto:{{ . }}">Get in touch</a>
+            {{ end }}
+          </div>
         </div>
         <div class="hero-image">
           {{ $avatarUrl := site.Params.avatar.home.url | default site.Params.avatar.url }}
@@ -26,21 +32,25 @@
           {{ $enableResize := site.Params.avatar.home.enableResize | default site.Params.avatar.enableResize | default false }}
 
           {{ if $avatarUrl }}
-            <img src="{{ $avatarUrl }}" alt="{{ site.Title }}" class="hero-logo">
+            <img src="{{ $avatarUrl }}" alt="" width="440" height="440" decoding="async" fetchpriority="high" class="hero-logo">
           {{ else if $avatarAsset }}
             {{ with resources.Get $avatarAsset }}
               {{ if $enableResize }}
                 {{ with .Resize "512x" }}
-                  <img src="{{ .RelPermalink }}" alt="{{ site.Title }}" class="hero-logo">
+                  <img src="{{ .RelPermalink }}" alt="" width="{{ .Width }}" height="{{ .Height }}" decoding="async" fetchpriority="high" class="hero-logo">
                 {{ end }}
               {{ else }}
-                <img src="{{ .RelPermalink }}" alt="{{ site.Title }}" class="hero-logo">
+                <img src="{{ .RelPermalink }}" alt="" width="{{ .Width }}" height="{{ .Height }}" decoding="async" fetchpriority="high" class="hero-logo">
               {{ end }}
             {{ end }}
           {{ else }}
             <img
               src="/favicon/logo-transparent/android-chrome-512x512.png"
-              alt="{{ site.Title }}"
+              alt=""
+              width="512"
+              height="512"
+              decoding="async"
+              fetchpriority="high"
               class="hero-logo">
           {{ end }}
         </div>
@@ -51,13 +61,26 @@
   <div class="home-container">
     <!-- Posts List -->
     <section class="posts-section">
-      <h2 class="posts-title">Recent Posts</h2>
+      <h2 class="posts-title">Latest writeups</h2>
 
-      <div class="posts-list">
-        {{ range where site.RegularPages "Type" "posts" | first 10 }}
-          {{ partial "post-card.html" (dict "page" . "limit" 3) }}
+      {{ $posts := where site.RegularPages "Type" "posts" }}
+      {{ $recent := $posts | first 10 }}
+      {{ if $recent }}
+        <div class="posts-list">
+          {{ range $recent }}
+            {{ partial "post-card.html" (dict "page" . "limit" 3) }}
+          {{ end }}
+        </div>
+
+        {{ if gt (len $posts) (len $recent) }}
+          <a class="posts-more" href="{{ "/posts/" | relLangURL }}">All writeups &rarr;</a>
         {{ end }}
-      </div>
+      {{ else }}
+        <p class="posts-empty">
+          Nothing published yet. Meanwhile, there&rsquo;s
+          <a href="{{ "/about/" | relLangURL }}">more about me</a>.
+        </p>
+      {{ end }}
     </section>
   </div>
 {{ end }}

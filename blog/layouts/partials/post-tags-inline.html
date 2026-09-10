@@ -1,0 +1,19 @@
+{{/*
+  Project override: same markup as the theme partial but without the
+  onclick="event.stopPropagation()" handlers. The card is no longer a JS click
+  target (see post-card.html), so the tag links just need to sit above the
+  stretched title overlay — posts.css already gives .post-tag position:relative
+  and z-index, so a plain <a> works and the head stays free of inline JS.
+*/}}
+{{ $limit := default 0 .limit }}
+{{ if .Params.tags }}
+  <div class="post-tags">
+    {{ $tags := .Params.tags }}
+    {{ if gt $limit 0 }}
+      {{ $tags = first $limit .Params.tags }}
+    {{ end }}
+    {{ range $tags }}
+      <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="post-tag">{{ . }}</a>
+    {{ end }}
+  </div>
+{{ end }}
